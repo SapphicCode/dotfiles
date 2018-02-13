@@ -1,0 +1,12 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
+- clean: ['~', '~/.config']
+
+- link:
+    ~/.vimrc:
+    ~/.gitconfig:
+    ~/.yaourtrc:
+
