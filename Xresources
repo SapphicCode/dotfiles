@@ -1,0 +1,8 @@
+! urxvt
+URxvt.font: xft:Fira code:size=9
+
+! colors
+*.foreground:   #769ddb
+*.background:   #000000
+*.cursorColor:  #769ddb
+

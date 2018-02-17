@@ -9,4 +9,6 @@
     ~/.vimrc:
     ~/.gitconfig:
     ~/.yaourtrc:
+    ~/.config/fish/config.fish: fish.conf
+    ~/.Xresources:
 
