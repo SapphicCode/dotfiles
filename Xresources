@@ -1,5 +1,6 @@
 ! urxvt
 URxvt.font: xft:Fira code:size=9
+URxvt.scrollBar: false
 
 ! colors
 *.foreground:   #769ddb
