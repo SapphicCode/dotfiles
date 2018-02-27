@@ -10,6 +10,7 @@
     ~/.gitconfig:
     ~/.yaourtrc:
     ~/.config/fish/config.fish: fish.conf
+    ~/.config/redshift.conf:
     ~/.Xresources:
     ~/.ssh/authorized_keys:
 
