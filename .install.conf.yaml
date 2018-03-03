@@ -11,6 +11,7 @@
     ~/.yaourtrc:
     ~/.config/fish/config.fish: fish.conf
     ~/.config/redshift.conf:
+    ~/.config/dunst/dunstrc:
     ~/.Xresources:
     ~/.ssh/authorized_keys:
 
