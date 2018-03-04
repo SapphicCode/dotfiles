@@ -9,4 +9,5 @@ set autoindent
 set copyindent
 " Line wrapping
 set wrap
+set linebreak
 
