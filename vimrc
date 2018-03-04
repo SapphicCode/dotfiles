@@ -7,4 +7,6 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set copyindent
+" Line wrapping
+set wrap
 
