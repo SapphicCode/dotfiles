@@ -14,4 +14,5 @@
     ~/.config/dunst/dunstrc:
     ~/.Xresources:
     ~/.ssh/authorized_keys:
+    ~/.makepkg.conf:
 
