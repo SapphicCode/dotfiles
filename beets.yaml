@@ -1,0 +1,4 @@
+paths:
+    default: $albumartist/$album%aunique{}/$disc.$track - $title
+    comp: Compilations/$album%aunique{}/$disc.$track - $title
+
