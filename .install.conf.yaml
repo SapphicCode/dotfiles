@@ -15,4 +15,5 @@
     ~/.Xresources:
     ~/.ssh/authorized_keys:
     ~/.config/beets/config.yaml: beets.yaml
+    ~/.config/fontconfig/fonts.conf: fontconfig.xml
 
