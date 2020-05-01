@@ -24,4 +24,4 @@ ln -vsf $PWD/dunstrc ~/.config/dunst
 
 # ssh
 mkdir -vp ~/.ssh
-ln -vsf $PWD/authorized_keys ~/.ssh/
+cp -v --remove-destination $PWD/authorized_keys ~/.ssh/
