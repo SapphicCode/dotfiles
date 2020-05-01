@@ -1,14 +1,23 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-set -e
+# main directory
+ln -vsf $PWD/gitconfig ~/.gitconfig
+ln -vsf $PWD/vimrc ~/.vimrc
+ln -vsf $PWD/yaourtrc ~/.yaourtrc
 
-CONFIG=".install.conf.yaml"
-DOTBOT_DIR="dotbot"
+# config directory
+mkdir -vp ~/.config
+ln -vsf $PWD/redshift.conf ~/.config/
+# fish
+mkdir -vp ~/.config/fish
+ln -vsf $PWD/fish/config.fish ~/.config/fish/
+# fontconfig
+mkdir -vp ~/.config/fontconfig
+ln -vsf $PWD/fontconfig.xml ~/.config/fontconfig/fonts.conf
+# dunst
+mkdir -vp ~/.config/dunst
+ln -vsf $PWD/dunstrc ~/.config/dunst
 
-DOTBOT_BIN="bin/dotbot"
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-cd "${BASEDIR}"
-git submodule update --init --recursive "${DOTBOT_DIR}"
-
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+# ssh
+mkdir -vp ~/.ssh
+ln -vsf $PWD/authorized_keys ~/.ssh/
