@@ -12,14 +12,24 @@ set -x GOPATH ~/dev/go
 if [ -d $GOPATH/bin ]
     set PATH $PATH $GOPATH/bin
 end
-
 if type -q qt5ct
     export QT_QPA_PLATFORMTHEME=qt5ct
 end
 
-alias install="sudo pacman -Sy"
-alias remove="sudo pacman -Rs"
+# pacman helpers
+if type -q pacman
+    alias install="sudo pacman -S"
+    alias remove="sudo pacman -Rs"
+end
 
+# quick mastodon poster
+if type -q toot
+    function post
+        toot post $argv
+    end
+end
+
+# prompt
 if type -q starship
     eval (starship init fish)
 else

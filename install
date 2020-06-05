@@ -8,10 +8,12 @@ fi
 ln -vsf $PWD/gitconfig ~/.gitconfig
 ln -vsf $PWD/vimrc ~/.vimrc
 ln -vsf $PWD/yaourtrc ~/.yaourtrc
+ln -vsf $PWD/xonshrc.py ~/.xonshrc
 
 # config directory
 mkdir -vp ~/.config
 ln -vsf $PWD/redshift.conf ~/.config/
+ln -vsf $PWD/alacritty.yml ~/.config/
 # fish
 mkdir -vp ~/.config/fish
 ln -vsf $PWD/fish/config.fish ~/.config/fish/
