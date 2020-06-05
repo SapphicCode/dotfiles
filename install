@@ -15,8 +15,7 @@ mkdir -vp ~/.config
 ln -vsf $PWD/redshift.conf ~/.config/
 ln -vsf $PWD/alacritty.yml ~/.config/
 # fish
-mkdir -vp ~/.config/fish
-ln -vsf $PWD/fish/config.fish ~/.config/fish/
+ln -vsfT $PWD/fish ~/.config/fish
 # fontconfig
 mkdir -vp ~/.config/fontconfig
 ln -vsf $PWD/fontconfig.xml ~/.config/fontconfig/fonts.conf
