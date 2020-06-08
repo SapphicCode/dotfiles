@@ -22,6 +22,8 @@ ln -vsf $PWD/fontconfig.xml ~/.config/fontconfig/fonts.conf
 # dunst
 mkdir -vp ~/.config/dunst
 ln -vsf $PWD/dunstrc ~/.config/dunst
+# waybar
+ln -vsfT $PWD/waybar ~/.config/waybar
 
 # ssh
 mkdir -vp ~/.ssh
