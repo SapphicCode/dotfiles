@@ -1,9 +1,15 @@
 import os
+import datetime
 import subprocess
+import shutil
 
+$PATH.append('/var/lib/snapd/snap/bin')
 $PATH.append(os.path.join($HOME, ".local", "bin"))
 $GOPATH = os.path.join($HOME, "dev", "go")
 $CGO_ENABLED = 0
+$SSH_AUTH_SOCK = f'/run/user/{os.getuid()}/keyring/ssh'
+if shutil.which('sway'):
+    $SWAYSOCK = $(sway --get-socketpath).strip()
 
 aliases['dc'] = ['docker-compose']
 aliases['la'] = ['ls', '-hAl']
