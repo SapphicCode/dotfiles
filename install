@@ -24,6 +24,8 @@ mkdir -vp ~/.config/dunst
 ln -vsf $PWD/dunstrc ~/.config/dunst
 # waybar
 ln -vsfT $PWD/waybar ~/.config/waybar
+# mako
+ln -vsfT $PWD/mako ~/.config/mako
 
 # ssh
 mkdir -vp ~/.ssh
