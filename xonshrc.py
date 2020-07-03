@@ -3,6 +3,7 @@ import datetime
 import subprocess
 import shutil
 
+$PATH.append('/snap/bin')
 $PATH.append('/var/lib/snapd/snap/bin')
 $PATH.append(os.path.join($HOME, ".local", "bin"))
 $GOPATH = os.path.join($HOME, "dev", "go")
