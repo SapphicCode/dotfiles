@@ -14,6 +14,8 @@ ln -vsf $PWD/xonshrc.py ~/.xonshrc
 mkdir -vp ~/.config
 ln -vsf $PWD/redshift.conf ~/.config/
 ln -vsf $PWD/alacritty.yml ~/.config/
+# git
+ln -vsfT $PWD/git ~/.config/git
 # fish
 ln -vsfT $PWD/fish ~/.config/fish
 # fontconfig
