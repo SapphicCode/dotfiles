@@ -31,4 +31,4 @@ ln -vsfT $PWD/mako ~/.config/mako
 
 # ssh
 mkdir -vp ~/.ssh
-cp -v --remove-destination $PWD/authorized_keys ~/.ssh/
+curl --fail "https://github.com/Pandentia.keys" -o .keys && cp -v --remove-destination $PWD/.keys ~/.ssh/authorized_keys
