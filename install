@@ -1,8 +1,8 @@
 #!/bin/sh
 
-if type git > /dev/null 2> /dev/null; then
-    git pull
-fi
+#if type git > /dev/null 2> /dev/null; then
+#    git pull
+#fi
 
 # main directory
 ln -vsf $PWD/gitconfig ~/.gitconfig
