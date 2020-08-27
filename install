@@ -17,6 +17,7 @@ ln -vsf $PWD/alacritty.yml ~/.config/
 # git
 ln -vsfT $PWD/git ~/.config/git
 # fish
+rm -r ~/.config/fish
 ln -vsfT $PWD/fish ~/.config/fish
 # fontconfig
 mkdir -vp ~/.config/fontconfig
