@@ -1,9 +1,0 @@
-! urxvt
-URxvt.font: xft:Fira code:size=9
-URxvt.scrollBar: false
-
-! colors
-*.foreground:   #ffab91
-*.background:   #000000
-*.cursorColor:  #ffab91
-
