@@ -14,22 +14,13 @@ end
 # aliases
 alias userctl="systemctl --user"
 alias dc="docker-compose"
+
+# editor
 if type -q micro
     alias vi=micro
     alias vim=micro
+    set -x EDITOR micro
 end
-
-# # SSH agents
-# set -x SSH_AUTH_SOCK /run/user/(id -u)/ssh-agent.sock
-# ## yubikey-agent
-# if type -q yubikey-agent && [ ! -S $SSH_AUTH_SOCK ]
-    # yubikey-agent -l $SSH_AUTH_SOCK > /dev/null ^ /dev/null &; disown
-# end
-# ## GPG agent
-# if type -q gpgconf && [ ! -S $SSH_AUTH_SOCK ]
-    # set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-    # gpgconf --launch gpg-agent
-# end
 
 # prompt
 if type -q starship
