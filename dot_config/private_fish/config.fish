@@ -14,6 +14,9 @@ end
 # aliases
 alias userctl="systemctl --user"
 alias dc="docker-compose"
+if not type -q docker
+    alias docker="podman"
+end
 
 # editor
 if type -q micro
