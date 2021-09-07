@@ -7,3 +7,8 @@
 	name = Cassandra
 	email = cassandra+git@beelen.one
 {{- end }}
+
+[commit]
+{{- if eq .chezmoi.hostname "maeve" }}
+	gpgsign = true
+{{- end }}
