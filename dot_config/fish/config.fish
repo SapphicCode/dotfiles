@@ -17,7 +17,7 @@ alias dc="docker-compose"
 if not type -q docker
     alias docker="podman"
 end
-if not type -q doas
+if type -q doas
     alias sudo="doas"
 end
 
