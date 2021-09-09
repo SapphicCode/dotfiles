@@ -14,11 +14,11 @@ end
 # aliases
 alias userctl="systemctl --user"
 alias dc="docker-compose"
-if not type -q docker
-    alias docker="podman"
+if not type -q docker; and type -q podman
+    abbr --add docker podman
 end
 if type -q doas
-    alias sudo="doas"
+    abbr --add sudo doas
 end
 
 # editor
