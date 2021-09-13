@@ -6,7 +6,7 @@ paths:
 
 per_disc_numbering: yes
 
-plugins: fetchart embedart replaygain
+plugins: fetchart embedart replaygain convert
 replaygain:
   auto: no
   backend: gstreamer
