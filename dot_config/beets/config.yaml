@@ -1,3 +1,6 @@
+directory: ~/Music
+library: ~/Music/.beets.db
+
 paths:
   default: $albumartist/$album%aunique{}/%if{$disc,$disc.}$track - $title
   singleton: Singles/$artist/$title
