@@ -11,6 +11,15 @@ if [ -d $HOME/.local/bin ]
     set -x -p PATH $HOME/.local/bin
 end
 
+# fish MOTD
+function fish_greeting
+    if not status --is-login; and status --is-interactive
+        if type -q task; and [ -d ~/.task/ ]
+            task next
+        end
+    end
+end
+
 # aliases
 alias userctl="systemctl --user"
 alias dc="docker-compose"
