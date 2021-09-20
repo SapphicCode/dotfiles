@@ -1,3 +1,4 @@
+
 # environment
 ## Go
 set -x GOPATH $HOME/dev/go
@@ -14,7 +15,7 @@ end
 # fish MOTD
 function fish_greeting
     if not status --is-login; and status --is-interactive
-        if type -q task; and [ -d ~/.task/ ]
+        if type -q task; and test -d ~/.task/
             task next
         end
     end
@@ -23,6 +24,7 @@ end
 # aliases
 alias userctl="systemctl --user"
 alias dc="docker-compose"
+alias ctx="task context"
 if not type -q docker; and type -q podman
     abbr --add docker podman
 end
