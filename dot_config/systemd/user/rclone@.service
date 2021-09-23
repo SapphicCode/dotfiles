@@ -1,0 +1,11 @@
+[Unit]
+Description=rclone mount %i
+
+[Service]
+Type=notify
+ExecStartPre=mkdir -p %h/mnt/%i
+ExecStart=rclone mount --vfs-cache-mode=full %i: %h/mnt/%i
+ExecStopPost=-rm -d %h/mnt/%i
+
+[Install]
+WantedBy=default.target
