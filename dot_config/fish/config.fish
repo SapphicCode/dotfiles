@@ -1,4 +1,3 @@
-
 # environment
 ## Go
 set -x GOPATH $HOME/dev/go
@@ -6,10 +5,10 @@ set -x CGO_ENABLED 0
 
 # local binaries
 if [ -d $GOPATH/bin ]
-    set -x -p PATH $GOPATH/bin
+    fish_add_path -m $GOPATH/bin
 end
 if [ -d $HOME/.local/bin ]
-    set -x -p PATH $HOME/.local/bin
+    fish_add_path -m $HOME/.local/bin
 end
 
 # fish MOTD
