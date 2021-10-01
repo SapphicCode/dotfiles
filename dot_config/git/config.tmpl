@@ -1,3 +1,6 @@
+[core]
+	hooksPath = {{ .chezmoi.homeDir }}/.config/git/hooks
+
 [user]
 {{- if eq .chezmoi.hostname "maeve" }}
 	name = Cassandra Beelen
