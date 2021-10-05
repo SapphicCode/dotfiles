@@ -39,3 +39,4 @@ uda.ticket.label=Ticket
 
 # Other customizations
 weekstart=Monday
+reserved.lines=3
