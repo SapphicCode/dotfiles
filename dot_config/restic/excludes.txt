@@ -1,0 +1,29 @@
+# Caches
+.cache
+.var/**cache*
+.var/**Cache*
+.kube/cache
+
+# Not a cache, but Electron:
+.config/google-chrome
+.config/Slack
+.config/Code
+.config/VIA
+.mozilla
+
+# Programming caches
+.npm
+.vscode
+.local/share/virtualenv
+dev/**/node_modules
+dev/**/venv
+dev/go/pkg
+
+# Downloads
+.local/share/containers
+.local/share/Steam
+Downloads
+Music
+
+# Trash
+.local/share/Trash
