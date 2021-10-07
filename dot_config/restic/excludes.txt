@@ -1,29 +1,40 @@
 # Caches
 .cache
-.var/**cache*
-.var/**Cache*
 .kube/cache
 
 # Not a cache, but Electron:
 .config/google-chrome
+.config/google-chrome-unstable
 .config/Slack
 .config/Code
 .config/VIA
+.config/discord
+.config/obsidian
+.local/share/KotatogramDesktop
 .mozilla
 
 # Programming caches
+.ansible
 .npm
 .vscode
 .local/share/virtualenv
-dev/**/node_modules
+**/node_modules
+**/site-packages
+**/.terraform/providers
 dev/**/venv
-dev/go/pkg
+dev/go
 
 # Downloads
-.local/share/containers
-.local/share/Steam
 Downloads
+dev/tmp
 Music
 
 # Trash
 .local/share/Trash
+
+# Programs
+Games
+.var/app
+.local/share/Steam
+.local/share/containers
+.local/bin
