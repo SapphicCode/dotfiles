@@ -14,7 +14,7 @@ with open(argv[1], "r") as f:
 if commit_msg[0].startswith("Merge"):
     commit_msg[0] = f"chore: {commit_msg[0].lower()}"
 if commit_msg[0].startswith("Revert"):
-    commit_msg[0] = "fix: {commit_msg[0].lower()}"
+    commit_msg[0] = f"fix: {commit_msg[0].lower()}"
 
 # taskwarrior
 try:

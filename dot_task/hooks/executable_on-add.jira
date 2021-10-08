@@ -1,0 +1,164 @@
+#!/usr/bin/env python
+
+import json
+import os
+import re
+import sys
+import typing
+
+import arrow
+import requests
+
+
+class JiraException(Exception):
+    pass
+
+
+class Jira:
+    def __init__(self, base: str, auth: typing.Tuple[str, str]):
+        self.base = base
+        self.auth = auth
+
+    def get_issue(self, issue_key) -> dict:
+        resp = requests.get(
+            f"{self.base}/rest/api/2/issue/{issue_key}",
+            auth=self.auth,
+        )
+        if not resp.ok:
+            raise JiraException(f"Jira had issues getting an issue: {resp.status_code}")
+        return resp.json()
+
+    def do_issue_assign(self, issue_key, username) -> requests.Response:
+        resp = requests.put(
+            f"{self.base}/rest/api/2/issue/{issue_key}/assignee",
+            auth=self.auth,
+            json={"name": username},
+        )
+        if not resp.ok:
+            raise JiraException(
+                f"Jira had issues assigning an issue: {resp.status_code}"
+            )
+        return resp
+
+    def get_issue_transitons(self, issue_key) -> dict:
+        resp = requests.get(
+            f"{self.base}/rest/api/2/issue/{issue_key}/transitions", auth=self.auth
+        )
+        if not resp.ok:
+            raise JiraException("Jira issue getting transitions")
+
+        transitions = resp.json()["transitions"]
+        return {x["name"]: x["id"] for x in transitions}
+
+    def do_issue_transition(self, issue_key, transition) -> requests.Response:
+        transitions = self.get_issue_transitons(issue_key)
+        transition_id = transitions.get(transition)
+
+        resp = requests.post(
+            f"{self.base}/rest/api/2/issue/{issue_key}/transitions",
+            auth=self.auth,
+            json={"transition": transition_id},
+        )
+        if not resp.ok:
+            raise JiraException("While POSTing an issue transition")
+        return resp
+
+
+action = os.path.basename(sys.argv[0]).split(".")[0]
+task_original = json.loads(input())
+
+
+jira = None
+with open(os.path.join(os.environ["HOME"], ".task", "jira.json")) as f:
+    jira = jira.Jira(**json.loads(f.read()))
+
+
+def on_add() -> typing.Tuple[dict, typing.Optional[str]]:
+    task = task_original
+    comment = None
+
+    # try Jira match
+    match = re.search(r"(([A-Z]+)-(\d+))$", task_original.get("description", ""))
+    if match:
+        # TODO: prevent duplicates
+
+        # try to fetch the ticket from Jira
+        issue = jira.get_issue(match.group(1))
+
+        # extract Jira fields
+        issue_key = issue["key"]
+        issue_summary = issue["fields"]["summary"]
+        issue_created_at = arrow.get(issue["fields"]["created"])
+        ## TODO: non-subtask handling
+        issue_parent_key = issue["fields"]["parent"]["key"]
+
+        # assign to self
+        jira.do_issue_assign(issue_key, jira.auth[0])
+
+        # modify task
+        task["ticket"] = issue_key
+        task["description"] = issue_summary
+        task["project"] = f"Work.{issue_parent_key.replace('-', '.')}"
+        task["entry"] = issue_created_at.strftime("%Y%m%dT%H%M%SZ")
+        comment = "Task filled by Jira and assigned to you."
+
+    return task, comment
+
+
+def on_modify() -> typing.Tuple[dict, typing.Optional[str]]:
+    task_modified = json.loads(input())
+    comment = None
+
+    # check if we're even in a ticket
+    if not task_original.get("ticket", None) or not task_modified.get("ticket", None):
+        return task_modified, None
+
+    issue_key = task_modified["ticket"]
+
+    # diff changes
+    # status: * -> *
+    if task_original["status"] != task_modified["status"]:
+        ## status: * -> completed (move task to Done)
+        if task_modified["status"] == "completed":
+            jira.do_issue_transition(issue_key, "Closed")
+            comment = "Jira: Issue closed."
+
+        ## status: * -> deleted (unassign self)
+        if task_modified["status"] == "deleted":
+            jira.do_issue_assign(issue_key, None)
+            comment = "Jira: Issue unassigned."
+
+    # start: * -> *
+    if task_original.get("start", None) != task_modified.get("start", None):
+        ## start: null -> datetime (* -> In Progress)
+        if task_modified.get("start", None):
+            jira.do_issue_transition(issue_key, "In Progress")
+            comment = "Jira: In Progress."
+        ## start: datetime -> null (* -> To Do)
+        ## end: null (Task was not finished)
+        elif not task_modified.get("end", None):
+            jira.do_issue_transition(issue_key, "To Do")
+            comment = "Jira: To Do."
+
+    return task_modified, comment
+
+
+# define handlers
+handlers = {
+    "on-add": on_add,
+    "on-modify": on_modify,
+}
+
+# return permutated task
+try:
+    task, comment = handlers[action]()
+except Exception as e:
+    task = task_original
+    comment = f"{type(e)}: {e}"
+
+print(json.dumps(task))
+if comment:
+    print(comment)
+
+if not task:
+    sys.exit(1)
