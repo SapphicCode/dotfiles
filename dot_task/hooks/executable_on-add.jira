@@ -15,9 +15,15 @@ class JiraException(Exception):
 
 
 class Jira:
-    def __init__(self, base: str, auth: typing.Tuple[str, str]):
+    def __init__(self, base: str = "", auth: typing.Tuple[str, str] = ()):
         self.base = base
-        self.auth = tuple(auth)
+        self.auth = auth
+
+        if not (self.base and self.auth):
+            with open(os.path.join(os.environ["HOME"], ".task", "jira.json")) as f:
+                data = json.loads(f.read())
+                self.base = data.get("base")
+                self.auth = tuple(data.get("auth"))
 
     def get_issue(self, issue_key) -> dict:
         resp = requests.get(
@@ -67,10 +73,13 @@ class Jira:
 action = os.path.basename(sys.argv[0]).split(".")[0]
 task_original = json.loads(input())
 
-
-jira = None
-with open(os.path.join(os.environ["HOME"], ".task", "jira.json")) as f:
-    jira = Jira(**json.loads(f.read()))
+# if unauthed, do nothing
+try:
+    jira = Jira()
+except:
+    print(task_original)
+    if action == "on-modify":
+        print(input())
 
 
 def on_add() -> typing.Tuple[dict, typing.Optional[str]]:
