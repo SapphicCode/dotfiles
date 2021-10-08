@@ -70,7 +70,7 @@ task_original = json.loads(input())
 
 jira = None
 with open(os.path.join(os.environ["HOME"], ".task", "jira.json")) as f:
-    jira = jira.Jira(**json.loads(f.read()))
+    jira = Jira(**json.loads(f.read()))
 
 
 def on_add() -> typing.Tuple[dict, typing.Optional[str]]:
