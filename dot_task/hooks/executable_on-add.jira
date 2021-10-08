@@ -80,6 +80,7 @@ except:
     print(task_original)
     if action == "on-modify":
         print(input())
+    os.exit(0)
 
 
 def on_add() -> typing.Tuple[dict, typing.Optional[str]]:
