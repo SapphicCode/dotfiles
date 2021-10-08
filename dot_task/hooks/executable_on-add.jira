@@ -17,7 +17,7 @@ class JiraException(Exception):
 class Jira:
     def __init__(self, base: str, auth: typing.Tuple[str, str]):
         self.base = base
-        self.auth = auth
+        self.auth = tuple(auth)
 
     def get_issue(self, issue_key) -> dict:
         resp = requests.get(
@@ -152,7 +152,7 @@ handlers = {
 # return permutated task
 try:
     task, comment = handlers[action]()
-except Exception as e:
+except KeyboardInterrupt as e:
     task = task_original
     comment = f"{type(e)}: {e}"
 
