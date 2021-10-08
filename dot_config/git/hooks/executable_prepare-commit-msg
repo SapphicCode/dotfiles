@@ -1,0 +1,35 @@
+#!/usr/bin/env python
+
+from re import template
+import subprocess
+
+
+import json
+from sys import argv
+
+# read commit template
+commit_msg = []
+with open(argv[1], "r") as f:
+    commit_msg = f.read().split("\n")
+
+# conventional commits
+if commit_msg[0].startswith("Merge"):
+    commit_msg[0] = f"chore: {commit_msg[0].lower()}"
+if commit_msg[0].startswith("Revert"):
+    commit_msg[0] = "fix: {commit_msg[0].lower()}"
+
+# taskwarrior
+try:
+    template = ""
+    tasks = json.loads(subprocess.getoutput("task export +ACTIVE and ticket.any:"))
+    for task in tasks:
+        template += f'- {task.get("ticket")} {task.get("description")}\n'
+
+    if template:
+        commit_msg.insert(1, f"\nrefs:\n{template.strip()}\n")
+except:
+    pass
+
+# write back
+with open(argv[1], "w") as f:
+    f.write("\n".join(commit_msg))
