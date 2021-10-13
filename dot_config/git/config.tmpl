@@ -15,3 +15,6 @@
 {{- if eq .chezmoi.hostname "maeve" }}
 	gpgsign = true
 {{- end }}
+
+[credential]
+	helper = libsecret
