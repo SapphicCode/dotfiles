@@ -1,0 +1,12 @@
+[user]
+    name = Cassandra
+    email = cassandra+git@beelen.one
+
+[commit]
+    gpgsign = false
+
+[credential]
+    helper = libsecret
+
+[includeIf "gitdir:~/dev/work"]
+    path = ~/.config/git/work/config

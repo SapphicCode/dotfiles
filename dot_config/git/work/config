@@ -1,0 +1,10 @@
+[user]
+    name = Cassandra Beelen
+    email = 10685096+SapphicCode@users.noreply.github.com
+    signingkey = D41B8E488EF28C30
+
+[core]
+    hooksPath = ~/.config/git/work/hooks
+
+[commit]
+    gpgsign = true
