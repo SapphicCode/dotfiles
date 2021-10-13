@@ -4,8 +4,8 @@ library: ~/Music/.beets.db
 paths:
   default: $albumartist/$album%aunique{}/%if{$disc,$disc.}$track - $title
   singleton: Singles/$artist/$title
-  comp: Compilations/$album%aunique{}/%if{$disc,$disc.}$track - $title
   albumtype:soundtrack: Soundtracks/$album%aunique{}/%if{$disc,$disc.}$track - $title
+  comp: Compilations/$album%aunique{}/%if{$disc,$disc.}$track - $title
 
 per_disc_numbering: yes
 
