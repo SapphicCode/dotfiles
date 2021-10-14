@@ -8,5 +8,5 @@
 [credential]
     helper = libsecret
 
-[includeIf "gitdir:~/dev/work"]
+[includeIf "gitdir:~/dev/work/"]
     path = ~/.config/git/work/config
