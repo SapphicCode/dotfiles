@@ -18,13 +18,9 @@ if commit_msg[0].startswith("Revert"):
 
 # taskwarrior
 try:
-    template = ""
     tasks = json.loads(subprocess.getoutput("task export +ACTIVE and ticket.any:"))
     for task in tasks:
-        template += f'- {task.get("ticket")} {task.get("description")}\n'
-
-    if template:
-        commit_msg.insert(1, f"\nrefs:\n{template.strip()}\n")
+        commit_msg.append(f'ref: {task.get("ticket")} {task.get("description")}\n')
 except:
     pass
 
