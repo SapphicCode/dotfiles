@@ -30,7 +30,7 @@ data.location=~/.task
 #include /usr/share/task/no-color.theme
 
 # Define contexts
-context.work=project:Work
+context.work=
 context.home=project.not:Work
 
 # Define UDAs

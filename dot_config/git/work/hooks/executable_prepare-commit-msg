@@ -20,7 +20,9 @@ if commit_msg[0].startswith("Revert"):
 try:
     tasks = json.loads(subprocess.getoutput("task export +ACTIVE and ticket.any:"))
     for task in tasks:
-        commit_msg.append(f'ref: {task.get("ticket")} {task.get("description")}\n')
+        commit_msg.append(
+            f'ref: {task.get("ticket")} ({task.get("project").removeprefix("Work.").replace(".", "-")}) {task.get("description")}\n'
+        )
 except:
     pass
 
