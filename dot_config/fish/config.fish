@@ -21,21 +21,16 @@ function fish_greeting
 end
 
 # aliases
-alias userctl="systemctl --user"
-alias dc="docker-compose"
-alias ctx="task context"
+abbr --add userctl "systemctl --user"
+abbr --add ctx "task context"
 if not type -q docker; and type -q podman
     abbr --add docker podman
 end
 if type -q doas
     abbr --add sudo doas
 end
-
-# editor
-if type -q micro
-    alias vi=micro
-    alias vim=micro
-    set -x EDITOR micro
+if not type -q kustomize; and type -q kubectl
+    abbr --add kustomize "kubectl kustomize"
 end
 
 # prompt
