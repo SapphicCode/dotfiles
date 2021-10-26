@@ -10,6 +10,7 @@
 .config/VIA
 .config/discord
 .config/obsidian
+.config/Lens
 .local/share/KotatogramDesktop
 .mozilla
 
@@ -33,6 +34,7 @@ Music
 .local/share/Trash
 
 # Programs
+Applications
 Games
 .var/app
 .local/share/Steam

@@ -11,15 +11,6 @@ if [ -d $HOME/.local/bin ]
     fish_add_path -m $HOME/.local/bin
 end
 
-# fish MOTD
-function fish_greeting
-    if not status --is-login; and status --is-interactive
-        if type -q task; and test -d ~/.task/
-            task next limit:page
-        end
-    end
-end
-
 # aliases
 abbr --add userctl "systemctl --user"
 abbr --add ctx "task context"
