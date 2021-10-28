@@ -2,6 +2,10 @@
 ## Go
 set -x GOPATH $HOME/dev/go
 set -x CGO_ENABLED 0
+## Editors
+if type -q micro
+    set -x EDITOR micro
+end
 
 # local binaries
 if [ -d $GOPATH/bin ]

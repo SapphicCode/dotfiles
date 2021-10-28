@@ -34,6 +34,8 @@ context.work=project:Work or urgency > 5
 context.home=project.not:Work
 
 # Define UDAs
+uda.estimate.type=duration
+uda.estimate.label=Est
 uda.ticket.type=string
 uda.ticket.label=Ticket
 
