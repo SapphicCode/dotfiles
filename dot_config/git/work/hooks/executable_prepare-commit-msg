@@ -2,6 +2,7 @@
 
 import json
 import subprocess
+import os
 from re import template
 from sys import argv
 
@@ -16,15 +17,38 @@ if commit_msg[0].startswith("Merge"):
 if commit_msg[0].startswith("Revert"):
     commit_msg[0] = f"fix: {commit_msg[0].lower()}"
 
-# taskwarrior
+# jira
 try:
-    tasks = json.loads(subprocess.getoutput("task export +ACTIVE and ticket.any:"))
-    for task in tasks:
-        commit_msg.append(
-            f'ref: {task.get("ticket")} ({task.get("project").removeprefix("Work.").replace(".", "-")}) {task.get("description")}\n'
-        )
-except:
-    pass
+    import requests
+
+    jira = {}
+    with open(
+        os.path.join(os.environ["HOME"], ".config", "git", "work", "jira.json"), "r"
+    ) as f:
+        jira = json.loads(f.read())
+
+    jql = 'assignee = currentUser() AND statusCategory = "In Progress"'
+    issues_json = requests.get(
+        f'{jira["url"]}/rest/api/2/search',
+        params={"jql": jql},
+        auth=tuple(jira["auth"]),
+    ).json()
+
+    lines = []
+    for issue in issues_json["issues"]:
+        issue_line = f'ref: {issue["key"]}'
+        fields = issue.get("fields")
+        parent = fields.get("parent", {})
+        if parent:
+            issue_line += f' ({fields["parent"]["key"]})'
+        issue_line += f': {fields["summary"]}'
+
+        lines.append(issue_line)
+
+    commit_msg.extend(lines)
+
+except Exception as e:
+    commit_msg.append(f'# jira exception: {type(e)}: {e}')
 
 # write back
 with open(argv[1], "w") as f:
