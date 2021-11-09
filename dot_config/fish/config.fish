@@ -6,6 +6,10 @@ set -x CGO_ENABLED 0
 if type -q micro
     set -x EDITOR micro
 end
+## gcloud
+if type -q gcloud
+  export CLOUDSDK_PYTHON=(type --path python3.9)
+end
 
 # local binaries
 if [ -d $GOPATH/bin ]

@@ -29,6 +29,8 @@ dev/go
 Downloads
 dev/tmp
 Music
+**/MultiMC/bin/assets
+**/MultiMC/bin/libraries
 
 # Trash
 .local/share/Trash
