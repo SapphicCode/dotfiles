@@ -7,8 +7,8 @@ if type -q micro
     set -x EDITOR micro
 end
 ## gcloud
-if type -q gcloud
-  export CLOUDSDK_PYTHON=(type --path python3.9)
+if type -q gcloud; and type -q python3.9
+  set -x CLOUDSDK_PYTHON (type --path python3.9)
 end
 
 # local binaries
