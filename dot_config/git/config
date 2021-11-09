@@ -5,6 +5,9 @@
 [commit]
     gpgsign = false
 
+[pull]
+    rebase = false
+
 [credential]
     helper = libsecret
 
