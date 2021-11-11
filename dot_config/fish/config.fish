@@ -8,7 +8,7 @@ if type -q micro
 end
 ## gcloud
 if type -q gcloud; and type -q python3.9
-  set -x CLOUDSDK_PYTHON (type --path python3.9)
+    set -x CLOUDSDK_PYTHON (type --path python3.9)
 end
 
 # local binaries
@@ -20,6 +20,7 @@ if [ -d $HOME/.local/bin ]
 end
 
 # aliases
+## misc
 abbr --add userctl "systemctl --user"
 abbr --add ctx "task context"
 if not type -q docker; and type -q podman
@@ -28,8 +29,14 @@ end
 if type -q doas
     abbr --add sudo doas
 end
+## kubernetes
 if not type -q kustomize; and type -q kubectl
     abbr --add kustomize "kubectl kustomize"
+end
+## git
+if type -q git
+    abbr --add add "git add"
+    abbr --add commit "git commit"
 end
 
 # prompt
