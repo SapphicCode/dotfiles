@@ -28,9 +28,9 @@ dev/go
 # Downloads
 Downloads
 dev/tmp
-Music
 **/MultiMC/bin/assets
 **/MultiMC/bin/libraries
+.factorio/temp
 
 # Trash
 .local/share/Trash
