@@ -1,0 +1,12 @@
+{
+    "ft:go": {
+        "tabsize": 4,
+        "tabstospaces": false
+    },
+    "ft:python": {
+        "tabsize": 4
+    },
+    "savecursor": true,
+    "tabsize": 2,
+    "tabstospaces": true
+}
