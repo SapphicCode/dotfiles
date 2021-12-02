@@ -6,6 +6,9 @@ import os
 from re import template
 from sys import argv
 
+# gather context
+origin = subprocess.getoutput("git remote get-url origin")
+
 # read commit template
 commit_msg = []
 with open(argv[1], "r") as f:
@@ -18,8 +21,9 @@ if commit_msg[0].startswith("Revert"):
     commit_msg[0] = f"fix: {commit_msg[0].lower()}"
 
 # jira
-try:
+def do_jira():
     import requests
+    import yaml
 
     jira = {}
     with open(
@@ -39,16 +43,49 @@ try:
         issue_line = f'ref: {issue["key"]}'
         fields = issue.get("fields")
         parent = fields.get("parent", {})
+        parent_fields = parent.get("fields", {})
+        description = (
+            fields.get("description", "").strip()
+            or parent_fields.get("description", "").strip()
+        ).replace("\xa0", "")
+
         if parent:
             issue_line += f' ({fields["parent"]["key"]})'
         issue_line += f': {fields["summary"]}'
 
-        lines.append(issue_line)
+        if description:
+            docs = yaml.full_load_all(description)
+            repos = [x.get("repo", []) for x in docs if "repo" in x]
+            repos = [x for y in repos for x in y]
+            hit = False
+            for repo in repos:
+                if origin.startswith(repo):
+                    hit = True
+            if repos and not hit:
+                issue_line = ""
 
-    commit_msg.extend(lines)
+        if issue_line:
+            lines.append(issue_line)
 
-except Exception as e:
-    commit_msg.append(f'# jira exception: {type(e)}: {e}')
+    return lines
+
+
+# invoke helpers
+for func in [do_jira]:
+    try:
+        lines = func()
+        if lines:
+            commit_msg.extend(lines)
+    except Exception as e:
+        commit_msg.append(
+            "\n".join(
+                [
+                    f"# {x}"
+                    for x in f"{func.__name__} exception: {type(e)}: {e}".split("\n")
+                ]
+            )
+        )
+
 
 # write back
 with open(argv[1], "w") as f:
