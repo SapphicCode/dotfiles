@@ -22,7 +22,6 @@ end
 # aliases
 ## misc
 abbr --add userctl "systemctl --user"
-abbr --add ctx "task context"
 if not type -q docker; and type -q podman
     abbr --add docker podman
 end

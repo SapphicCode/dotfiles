@@ -1,4 +1,7 @@
 {
+    "ft:fish": {
+        "tabsize": 4
+    },
     "ft:go": {
         "tabsize": 4,
         "tabstospaces": false
