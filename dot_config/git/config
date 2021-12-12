@@ -2,6 +2,9 @@
     name = Cassandra
     email = keen.flag3479@phoenix.qcx.io
 
+[init]
+    defaultBranch = main
+
 [commit]
     gpgsign = false
 
