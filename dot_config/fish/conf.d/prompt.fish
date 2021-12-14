@@ -1,3 +1,5 @@
-if type -q starship
-    eval (starship init fish)
+if status is-interactive
+    if type -q starship
+        eval (starship init fish)
+    end
 end
