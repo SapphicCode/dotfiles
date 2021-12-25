@@ -1,4 +1,7 @@
 {
+    "ft:caddyfile": {
+        "tabsize": 4
+    },
     "ft:fish": {
         "tabsize": 4
     },
