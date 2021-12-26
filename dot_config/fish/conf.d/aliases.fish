@@ -1,10 +1,16 @@
 # general utility
 abbr --add userctl "systemctl --user"
+
 if not type -q docker; and type -q podman
     abbr --add docker podman
 end
+
+# elevated commands
 if type -q doas
     abbr --add sudo doas
+    abbr --add systemctl "doas systemctl"
+else
+    abbr --add systemctl "sudo systemctl"
 end
 
 # rm -> trash
