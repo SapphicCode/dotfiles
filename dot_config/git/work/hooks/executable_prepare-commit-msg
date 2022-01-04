@@ -71,7 +71,7 @@ def do_jira():
 
 
 # invoke helpers
-for func in [do_jira]:
+for func in []:
     try:
         lines = func()
         if lines:
