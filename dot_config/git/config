@@ -1,12 +1,10 @@
 [user]
     name = Cassandra
     email = keen.flag3479@phoenix.qcx.io
+    signingkey = AF4C35C685ADEDA1CBFA0764C322552A64112226
 
 [init]
     defaultBranch = main
-
-[commit]
-    signingkey = AF4C35C685ADEDA1CBFA0764C322552A64112226
 
 [pull]
     rebase = false
