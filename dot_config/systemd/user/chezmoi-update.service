@@ -1,0 +1,8 @@
+[Unit]
+Description=Update dotfiles
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=chezmoi update --force
