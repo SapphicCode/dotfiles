@@ -5,6 +5,7 @@
 # Not a cache, but Electron:
 .config/google-chrome
 .config/google-chrome-unstable
+.config/vivaldi
 .config/Slack
 .config/Code
 .config/VIA
@@ -28,8 +29,8 @@ dev/go
 # Downloads
 Downloads
 dev/tmp
-**/MultiMC/bin/assets
-**/MultiMC/bin/libraries
+**/MultiMC/assets
+**/MultiMC/libraries
 .factorio/temp
 
 # Trash
@@ -42,3 +43,4 @@ Games
 .local/share/Steam
 .local/share/containers
 .local/bin
+.config/kustomize/plugin

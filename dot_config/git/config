@@ -6,7 +6,7 @@
     defaultBranch = main
 
 [commit]
-    gpgsign = false
+    signingkey = AF4C35C685ADEDA1CBFA0764C322552A64112226
 
 [pull]
     rebase = false
