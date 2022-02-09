@@ -1,7 +1,7 @@
 [user]
     name = Cassandra
     email = keen.flag3479@phoenix.qcx.io
-    signingkey = AF4C35C685ADEDA1CBFA0764C322552A64112226
+    signingkey = F12BB1794C4D9C18398BC072B2D378B1196D38EC
 
 [init]
     defaultBranch = main
