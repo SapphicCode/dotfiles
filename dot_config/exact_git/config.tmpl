@@ -1,7 +1,7 @@
 [user]
     name = Cassandra
     email = keen.flag3479@phoenix.qcx.io
-    {{ if eq .chezmoi.hostname "GameLap" -}}
+    {{- if eq .chezmoi.hostname "GameLap"}}
     signingkey = 4539C91B8EC44EBAE3BCA37E23555FB146D3916F
     {{- end }}
 
@@ -15,7 +15,11 @@
     rebase = false
 
 [credential]
+    {{- if eq .chezmoi.hostname "GameLap" }}
+    helper = store
+    {{- else }}
     helper = libsecret
+    {{- end }}
 
 [includeIf "gitdir:~/dev/work/"]
     path = ~/.config/git/work/config
