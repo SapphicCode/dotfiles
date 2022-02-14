@@ -1,7 +1,9 @@
 [user]
     name = Cassandra
     email = keen.flag3479@phoenix.qcx.io
-    signingkey = F12BB1794C4D9C18398BC072B2D378B1196D38EC
+    {{ if eq .chezmoi.hostname "GameLap" -}}
+    signingkey = 4539C91B8EC44EBAE3BCA37E23555FB146D3916F
+    {{- end }}
 
 [init]
     defaultBranch = main
