@@ -3,7 +3,7 @@
     email = keen.flag3479@phoenix.qcx.io
     {{- if eq .chezmoi.hostname "GameLap" }}
     signingkey = 4539C91B8EC44EBAE3BCA37E23555FB146D3916F
-    {{- else if eq .chezmoi.hostname "Maeve.local" }}
+    {{- else if eq .chezmoi.hostname "Maeve" }}
     signingkey = B69A68F16DDAB3AA48213748E6D2633207AEE561
     {{- end }}
 
@@ -17,7 +17,9 @@
     rebase = false
 
 [credential]
-    {{- if eq .chezmoi.hostname "GameLap" }}
+    {{- if eq .chezmoi.os "darwin" }}
+    helper = osxkeychain
+    {{- else if eq .chezmoi.hostname "GameLap" }}
     helper = store
     {{- else }}
     helper = libsecret
