@@ -21,10 +21,20 @@ if [ -d /opt/homebrew ]
     fish_add_path -m $HOMEBREW_PREFIX/sbin
 end
 
+# macOS python
+if [ -d $HOME/Library/Python ]
+    for path in $HOME/Library/Python/*/bin
+        fish_add_path -m $path
+    end
+end
+
 # local binaries
 if [ -d $GOPATH/bin ]
     fish_add_path -m $GOPATH/bin
 end
 if [ -d $HOME/.local/bin ]
     fish_add_path -m $HOME/.local/bin
+end
+if [ -d $HOME/dev/scripts ]
+    fish_add_path -m $HOME/dev/scripts
 end

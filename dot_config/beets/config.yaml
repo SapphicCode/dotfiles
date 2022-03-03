@@ -1,5 +1,5 @@
-directory: ~/Music
-library: ~/Music/.beets.db
+directory: ~/Music/beets
+library: ~/Music/beets/.beets.db
 
 paths:
   default: $albumartist/$album%aunique{}/%if{$disc,$disc.}$track - $title
@@ -9,7 +9,7 @@ paths:
 
 per_disc_numbering: yes
 
-plugins: fetchart embedart replaygain convert
+plugins: fetchart embedart convert
 replaygain:
   auto: no
   backend: gstreamer
