@@ -1,0 +1,14 @@
+Compression yes
+{{- if eq .chezmoi.os "darwin" }}
+IdentityAgent {{ .chezmoi.homeDir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+{{- end }}
+
+Host blahaj
+Hostname blahaj.cluster.phoenix.sys.qcx.io
+
+Host corepi corepi.tc.qcx.io
+Hostname 100.100.172.31
+
+Host cs30 cs30.tc.qcx.io
+Hostname 192.168.1.2
+User pandentia
