@@ -12,6 +12,13 @@ if type -q gcloud; and type -q python3.9
     set -x CLOUDSDK_PYTHON (type --path python3.9)
 end
 
+# macOS python
+if [ -d $HOME/Library/Python ]
+    for path in $HOME/Library/Python/*/bin
+        fish_add_path -m $path
+    end
+end
+
 # brew
 if [ -d /opt/homebrew ]
     set -gx HOMEBREW_PREFIX /opt/homebrew
@@ -19,13 +26,6 @@ if [ -d /opt/homebrew ]
     set -gx HOMEBREW_REPOSITORY $HOMEBREW_PREFIX
     fish_add_path -m $HOMEBREW_PREFIX/bin
     fish_add_path -m $HOMEBREW_PREFIX/sbin
-end
-
-# macOS python
-if [ -d $HOME/Library/Python ]
-    for path in $HOME/Library/Python/*/bin
-        fish_add_path -m $path
-    end
 end
 
 # local binaries
