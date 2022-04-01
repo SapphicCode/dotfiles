@@ -1,5 +1,5 @@
 directory: ~/Music/beets
-library: ~/Music/beets/.beets.db
+# library: ~/Music/beets/.beets.db
 
 paths:
   default: $albumartist/$album%aunique{}/%if{$disc,$disc.}$track - $title
