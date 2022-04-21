@@ -16,6 +16,9 @@
 [pull]
     rebase = false
 
+[merge]
+    conflictStyle = diff3
+
 [credential]
     {{- if eq .chezmoi.os "darwin" }}
     helper = osxkeychain
