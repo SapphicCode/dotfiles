@@ -6,6 +6,9 @@ set -x CGO_ENABLED 0
 if type -q micro
     set -x EDITOR micro
 end
+if [ "$TERM_PROGRAM" = "vscode" ]
+    set -x EDITOR "code -w"
+end
 
 # gcloud
 if type -q gcloud; and type -q python3.9
