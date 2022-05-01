@@ -62,9 +62,10 @@ print(
 {'Stop Timer | param1=stop' if running else 'Resume Timer | param1=continue'} shell={timew} refresh=true
 ---
 Start Frequent Timers
--- Planning | shell={timew} refresh=true param1=start param2=Planning
--- Development | shell={timew} refresh=true param1=start param2=Development
--- Meetings, Scrum | shell={timew} refresh=true param1=start param2=Meetings param3=Scrum
--- Meetings, OKR | shell={timew} refresh=true param1=start param2=Meetings param3=OKR
+-- Planning             | refresh=true shell={timew} param2=Planning
+-- Development          | refresh=true shell={timew} param1=start param2=Development
+-- Meetings             | refresh=true shell={timew} param1=start param2=Meetings
+-- Meetings, Scrum      | refresh=true shell={timew} param1=start param2=Meetings param3=Scrum
+-- Meetings, OKR        | refresh=true shell={timew} param1=start param2=Meetings param3=OKR
 """.strip()
 )
