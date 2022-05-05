@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+
+from sys import argv
+
+# read commit template
+commit_msg = []
+with open(argv[1], "r") as f:
+    commit_msg = f.read().split("\n")
+
+# conventional commits
+if commit_msg[0].startswith("Merge"):
+    commit_msg[0] = f"chore: {commit_msg[0].lower()}"
+if commit_msg[0].startswith("Revert"):
+    commit_msg[0] = f"chore: {commit_msg[0].lower()}"
+
+# write back
+with open(argv[1], "w") as f:
+    f.write("\n".join(commit_msg))
