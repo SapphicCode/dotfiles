@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+
+import os
+import subprocess
+
+root = subprocess.check_output(("git", "rev-parse", "--show-toplevel")).decode()
+
+if os.path.isfile(os.path.join(root, ".pre-commit-config.yaml")):
+    try:
+        subprocess.check_call(("pre-commit", "run"))
+    except FileNotFoundError:
+        pass
