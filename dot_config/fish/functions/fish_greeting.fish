@@ -1,10 +1,10 @@
 function fish_greeting
-    if status --is-interactive; and [ "$TERM_PROGRAM" != "vscode" ]
+    if status --is-interactive; and [ "$TERM_PROGRAM" != "vscode" ]; and [ -z "$SSH_CLIENT" ]
         if type -q task; and test -d ~/.task/
-            if [ (date '+%u') -lt 6 ]
-                task next limit:page
+            if type -q timew; and timew :quiet
+                task next limit:page -major
             else
-                task next limit:page project.not:Work
+                task next limit:page project.not:Work -major
             end
         end
     end
