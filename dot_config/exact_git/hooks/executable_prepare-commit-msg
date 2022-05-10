@@ -8,10 +8,13 @@ with open(argv[1], "r") as f:
     commit_msg = f.read().split("\n")
 
 # conventional commits
-if commit_msg[0].startswith("Merge"):
-    commit_msg[0] = f"chore: {commit_msg[0].lower()}"
-if commit_msg[0].startswith("Revert"):
-    commit_msg[0] = f"chore: {commit_msg[0].lower()}"
+if commit_msg[0].startswith("Merge") or commit_msg[0].startswith("Revert"):
+    action, rest = commit_msg[0].split(" ", 1)
+    action = action.lower()
+    if action == "merge":
+        commit_msg[0] = f"chore: {action} {rest}"
+    if action == "revert":
+        commit_msg[0] = f"{action}: {rest}"
 
 # write back
 with open(argv[1], "w") as f:
