@@ -31,6 +31,12 @@
     helper = libsecret
     {{- end }}
 
+# always merge commit to default branches
+[branch "main.mergeOptions"]
+	ff = false
+[branch "master.mergeOptions"]
+	ff = false
+
 [includeIf "gitdir:~/dev/work/"]
     path = ~/.config/git/work/config
 [includeIf "gitdir:/Volumes/Work/"]
