@@ -62,7 +62,7 @@ print(
 {'Stop Timer | param1=stop' if running else 'Resume Timer | param1=continue'} shell={timew} refresh=true
 ---
 Start Frequent Timers
--- Planning             | refresh=true shell={timew} param2=Planning
+-- Planning             | refresh=true shell={timew} param1=start param2=Planning
 -- Development          | refresh=true shell={timew} param1=start param2=Development
 -- Meetings             | refresh=true shell={timew} param1=start param2=Meetings
 -- Meetings, Scrum      | refresh=true shell={timew} param1=start param2=Meetings param3=Scrum
