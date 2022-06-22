@@ -30,8 +30,9 @@ data.location=~/.task
 #include /usr/share/task/no-color.theme
 
 # Define contexts
-context.work=(project:Work and -major) or (+work and -major) or urgency > 5
-context.home=project.not:Work and -work
+context.work.read=(project:Work and -major) or (+work and -major) or urgency > 5
+context.work.write=+work
+context.home.read=project.not:Work and -work
 
 # Define UDAs
 uda.estimate.type=duration
