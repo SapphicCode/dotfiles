@@ -34,6 +34,7 @@ if type -q git
 
     abbr -g -a ga "git add"
     abbr -g -a gc "git commit"
+    abbr -g -a gca "git commit --amend"
     abbr -g -a gch "git checkout"
     abbr -g -a gcm 'git checkout $(_git_primary_branch); and git pull'
     abbr -g -a gmm 'git fetch; and git merge origin/$(_git_primary_branch)'
