@@ -1,9 +1,8 @@
 [Unit]
-Description=Back up saves hourly
+Description=Back up save games
+Wants=network-online.target
+After=network-online.target
 
-[Timer]
-OnStartupSec=15m
-OnUnitActiveSec=1h
-
-[Install]
-WantedBy=timers.target
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/with_path_extras %h/.local/scripts/steamdeck/backup_savegames.fish
