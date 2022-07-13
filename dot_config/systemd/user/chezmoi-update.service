@@ -5,4 +5,4 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=chezmoi update --force
+ExecStart=%h/.local/bin/with_path_extras chezmoi update --force
