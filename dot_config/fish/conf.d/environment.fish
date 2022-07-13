@@ -25,7 +25,7 @@ end
 # brew
 if string match -q -e Darwin (uname); and path is -d /opt/homebrew
     eval (/opt/homebrew/bin/brew shellenv)
-else if string match -d -e Linux (uname); and path is -d /home/linuxbrew/.linuxbrew
+else if string match -q -e Linux (uname); and path is -d /home/linuxbrew/.linuxbrew
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 end
 
