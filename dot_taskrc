@@ -39,7 +39,12 @@ uda.estimate.type=duration
 uda.estimate.label=Est
 uda.ticket.type=string
 uda.ticket.label=Ticket
+uda.repo.type=string
+uda.repo.label=SCM repository
+uda.branch.type=string
+uda.branch.label=SCM branch
 
 # Other customizations
 weekstart=Monday
 reserved.lines=3
+news.version=2.6.0
