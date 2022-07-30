@@ -5,4 +5,4 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=%h/.local/bin/with_path_extras %h/.local/scripts/steamdeck/backup_savegames.fish
+ExecStart=%h/.local/scripts/steamdeck/backup_savegames.fish

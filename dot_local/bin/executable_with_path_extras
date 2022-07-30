@@ -1,9 +1,0 @@
-#!/bin/sh
-
-for brew_path in /opt/homebrew /home/linuxbrew/.linuxbrew; do
-    if [ -d "$brew_path" ]; then
-        eval "$($brew_path/bin/brew shellenv)"
-    fi
-done
-
-exec $@
