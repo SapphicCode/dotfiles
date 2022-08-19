@@ -28,16 +28,16 @@ end
 
 # git
 if type -q git
-    function _git_primary_branch
-        git symbolic-ref refs/remotes/origin/HEAD | string split -r -m1 -f2 '/'
+    function _git_main
+        git rev-parse --abbrev-ref origin/HEAD | string split -r -m1 -f2 '/'
     end
 
     abbr -g -a ga "git add"
     abbr -g -a gc "git commit"
     abbr -g -a gca "git commit --amend"
     abbr -g -a gch "git checkout"
-    abbr -g -a gcm 'git checkout $(_git_primary_branch); and git pull'
-    abbr -g -a gmm 'git fetch; and git merge origin/$(_git_primary_branch)'
+    abbr -g -a gcm 'git checkout $(_git_main); and git pull'
+    abbr -g -a gmm 'git fetch; and git merge origin/HEAD'
     abbr -g -a gp "git push"
     abbr -g -a gpf "git push --force"
 end
