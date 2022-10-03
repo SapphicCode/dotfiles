@@ -1,3 +1,6 @@
 # macOS
 .DS_Store
 ._*
+
+# Scratch files
+__scratch/
