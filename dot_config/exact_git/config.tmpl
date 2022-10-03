@@ -1,9 +1,7 @@
 [user]
     name = Cassandra
     email = {{ b64dec "NmJiMjk0MTItYmYzNy00MDAzLWE0MTUtOWYxZWRiYzA3OTM5QHNhcHBoaWNjby5kZQ==" }}
-    {{- if eq .chezmoi.hostname "GameLap" }}
-    signingkey = 4539C91B8EC44EBAE3BCA37E23555FB146D3916F
-    {{- else if eq .chezmoi.hostname "Maeve" }}
+    {{- if eq .chezmoi.hostname "Maeve" }}
     signingkey = B69A68F16DDAB3AA48213748E6D2633207AEE561
     {{- end }}
 
