@@ -53,9 +53,17 @@ last_entry = (
 )
 running = not last_entry.get("end")
 
+icon = "􀖈"  # hourglass.bottomhalf.filled
+if time_entries:
+    icon = "􀖉"  # hourglass.tophalf.filled
+if running:
+    icon = "􀖇"  # hourglass
+if total_duration.total_seconds() / 3600 > 8:
+    icon = "􀹶"  # clock.badge.exclamationmark
+
 print(
     f"""
-{':hourglass_flowing_sand:' if running else ':hourglass:'} {str(total_duration)[:-3]}
+{icon} {str(total_duration)[:-3]}
 ---
 {'Current' if running else 'Last'} entry: {', '.join(last_entry['tags'])}
 {last_entry['duration']}
