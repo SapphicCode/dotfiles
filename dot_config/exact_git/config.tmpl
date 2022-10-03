@@ -23,6 +23,9 @@
 [merge]
     conflictStyle = diff3
 
+[rebase]
+    autoStash = true
+
 [credential]
     {{- if eq .chezmoi.os "darwin" }}
     helper = osxkeychain
