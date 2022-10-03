@@ -1,46 +1,72 @@
 # Caches
-.cache
-.kube/cache
+$HOME/.cache
+$HOME/Library/Caches
+$HOME/Library/Containers/**/Library/Caches
+$HOME/Library/Group Containers/**/Library/Caches
+$HOME/Library/Trial
+$HOME/.kube/cache
+$HOME/Library/Application Support/**/Cache
+$HOME/Library/Application Support/**/Code Cache
+$HOME/Library/Application Support/**/GPUCache
+$HOME/Library/Application Support/**/CacheStorage
+$HOME/Library/Application Support/**/ScriptCache
+$HOME/Library/Application Support/Code/Cached*
 
 # Not a cache, but Electron:
-.config/google-chrome
-.config/google-chrome-unstable
-.config/vivaldi
-.config/Slack
-.config/Code
-.config/VIA
-.config/discord
-.config/obsidian
-.config/Lens
-.local/share/KotatogramDesktop
-.mozilla
+$HOME/.config/google-chrome
+$HOME/.config/google-chrome-unstable
+$HOME/.config/vivaldi
+$HOME/.config/Slack
+$HOME/.config/Code
+$HOME/.config/VIA
+$HOME/.config/discord
+$HOME/.config/obsidian
+$HOME/.config/Lens
+$HOME/.local/share/KotatogramDesktop
+$HOME/.mozilla
 
 # Programming caches
-.ansible
-.npm
-.vscode
-.local/share/virtualenv
-**/node_modules
-**/site-packages
-**/.terraform/providers
-dev/**/venv
-dev/go
+$HOME/.ansible
+$HOME/.npm
+$HOME/.vscode
+$HOME/.ivy2
+$HOME/.local/share/virtualenv
+$HOME/.cargo
+$HOME/.platformio
+$HOME/.colima
+$HOME/.lima
+$HOME/.openjfx
+node_modules
+site-packages
+*.pyc
+.terraform/providers
+$HOME/dev/**/venv
+$HOME/dev/go
 
 # Downloads
-Downloads
-dev/tmp
-**/MultiMC/assets
-**/MultiMC/libraries
-.factorio/temp
+$HOME/Downloads
+$HOME/dev/tmp
+MultiMC/assets
+MultiMC/libraries
+$HOME/.factorio/temp
+$HOME/Library/Developer
+$HOME/Library/Application Support/Google/DriveFS
+$HOME/Library/Mobile Documents
+$HOME/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Application Support/Aerial
 
 # Trash
-.local/share/Trash
+$HOME/.local/share/Trash
+$HOME/.Trash
 
 # Programs
-Applications
-Games
-.var/app
-.local/share/Steam
-.local/share/containers
-.local/bin
-.config/kustomize/plugin
+$HOME/Applications
+$HOME/Games
+$HOME/.var/app
+$HOME/.local/share/Steam
+$HOME/Library/Application Support/Steam
+$HOME/.local/share/containers
+$HOME/.local/bin
+$HOME/.config/kustomize/plugin
+
+# Backups (ensure these are copied elsewhere!)
+$HOME/Library/Application Support/MobileSync/Backup
