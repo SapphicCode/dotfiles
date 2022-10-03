@@ -3,7 +3,7 @@
 import os
 import subprocess
 
-root = subprocess.check_output(("git", "rev-parse", "--show-toplevel")).decode()
+root = subprocess.check_output(("git", "rev-parse", "--show-toplevel")).decode().strip()
 
 if os.path.isfile(os.path.join(root, ".pre-commit-config.yaml")):
     try:
