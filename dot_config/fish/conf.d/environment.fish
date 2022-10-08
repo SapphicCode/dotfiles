@@ -4,7 +4,7 @@ set -x CGO_ENABLED 0
 
 # Editors
 if type -q micro
-    set -x EDITOR micro
+    set -x EDITOR nvim
 end
 if [ "$TERM_PROGRAM" = "vscode" ]
     set -x EDITOR "code -w"
