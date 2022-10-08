@@ -8,12 +8,7 @@ if not type -q docker; and type -q podman
 end
 
 # elevated commands
-if type -q doas
-    abbr -g -a sudo doas
-    abbr -g -a systemctl "doas systemctl"
-else
-    abbr -g -a systemctl "sudo systemctl"
-end
+abbr -g -a systemctl "sudo systemctl"
 
 # rm -> trash
 if type -q trash
