@@ -3,6 +3,8 @@
     email = {{ b64dec "NmJiMjk0MTItYmYzNy00MDAzLWE0MTUtOWYxZWRiYzA3OTM5QHNhcHBoaWNjby5kZQ==" }}
     {{- if eq .chezmoi.hostname "Maeve" }}
     signingkey = B69A68F16DDAB3AA48213748E6D2633207AEE561
+    {{- else if eq .chezmoi.hostname "blahaj" }}
+    signingkey = D3357F09D81FE2AD6F20D4512DE06569FC2EF1CF
     {{- end }}
 
 [init]
