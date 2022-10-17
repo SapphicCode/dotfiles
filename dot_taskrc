@@ -48,3 +48,4 @@ uda.branch.label=SCM branch
 weekstart=Monday
 reserved.lines=3
 news.version=2.6.0
+context=home
