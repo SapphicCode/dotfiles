@@ -1,0 +1,6 @@
+[submodule "dot_local/share/nvim/site/exact_pack/lexima.vim/start/lexima"]
+	path = dot_local/share/nvim/site/exact_pack/lexima.vim/start/lexima
+	url = https://github.com/cohama/lexima.vim.git
+[submodule "dot_local/share/nvim/site/exact_pack/elvish.vim/start/elvish"]
+	path = dot_local/share/nvim/site/exact_pack/elvish.vim/start/elvish
+	url = https://github.com/dmix/elvish.vim.git
