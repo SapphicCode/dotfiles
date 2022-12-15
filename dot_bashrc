@@ -1,8 +1,8 @@
-# .bashrc
+#!/usr/bin/bash
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+    . /etc/bashrc
 fi
 
 # User specific environment
@@ -12,21 +12,30 @@ then
 fi
 export PATH
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
-
 # User specific aliases and functions
 if [ -d ~/.bashrc.d ]; then
-	for rc in ~/.bashrc.d/*; do
-		if [ -f "$rc" ]; then
-			. "$rc"
-		fi
-	done
+    for rc in ~/.bashrc.d/*; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
 fi
 
 unset rc
 
-# Starship
+# brew
+for brew in /opt/homebrew /home/linuxbrew/.linuxbrew; do
+    if [ -d $brew ]; then
+        eval "$(${brew}/bin/brew shellenv)"
+    fi
+done
+
+# if we're in an SSH login shell, and fish exists, launch fish
+if shopt -q login_shell && [ "${SSH_CONNECTION}" ] && type -P fish > /dev/null; then
+    exec fish
+fi
+
+# starship
 if type starship &> /dev/null; then
   eval "$(starship init bash)"
 fi
