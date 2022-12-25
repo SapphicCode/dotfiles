@@ -5,7 +5,7 @@ set -x GOPATH $HOME/dev/go
 set -x CGO_ENABLED 0
 
 # Editors
-if type -q micro
+if type -q nvim
     set -x EDITOR nvim
 end
 if [ "$TERM_PROGRAM" = "vscode" ]
