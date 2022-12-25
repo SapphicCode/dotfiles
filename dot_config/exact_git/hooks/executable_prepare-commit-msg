@@ -12,7 +12,7 @@ if commit_msg[0].startswith("Merge") or commit_msg[0].startswith("Revert"):
     action, rest = commit_msg[0].split(" ", 1)
     action = action.lower()
     if action == "merge":
-        commit_msg[0] = f"chore: {action} {rest}"
+        commit_msg[0] = f"chore: {action} {rest}".replace("remote-tracking ", "")
     if action == "revert":
         commit_msg[0] = f"{action}: {rest}"
 
