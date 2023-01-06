@@ -1,0 +1,10 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+[git_status]
+stashed = ""      # I abuse stashes way too much for a symbol for them to be meaningful to me
+deleted = "-"
+conflicted = "‼️"
+modified = "~"
+
+[sudo]
+disabled = false
