@@ -1,5 +1,3 @@
-"$schema" = 'https://starship.rs/config-schema.json'
-
 [git_status]
 format = "([$all_status$ahead_behind]($style) )"
 stashed = ""                                     # I abuse stashes way too much for a symbol for them to be meaningful to me
