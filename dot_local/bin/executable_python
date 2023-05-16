@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Compatibility shim for scripts using just "python"
+
+exec python3 "$@"

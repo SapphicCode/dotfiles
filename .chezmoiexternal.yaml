@@ -1,3 +1,4 @@
+# k8s completions
 .config/fish/completions/kubectl.fish:
   type: file
   refreshPeriod: 168h
@@ -10,3 +11,11 @@
   type: file
   refreshPeriod: 168h
   url: https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/kubens.fish
+
+# bass (bash to fish interpreter)
+.config/fish/functions:
+  type: archive
+  url: https://github.com/edc/bass/archive/refs/tags/v1.0.zip
+  stripComponents: 2
+  include:
+    - "*/functions/*"
