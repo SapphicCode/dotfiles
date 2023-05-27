@@ -541,6 +541,9 @@ let-env config = {
   ]
 }
 
+# Add aliases
+source ~/.config/nushell/aliases.nu
+
 # Install starship
 try {
   starship init nu | save -f ~/.cache/starship/init.nu
