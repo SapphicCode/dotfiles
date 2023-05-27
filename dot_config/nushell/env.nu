@@ -90,6 +90,11 @@ let-env NU_PLUGIN_DIRS = [
 let-env PATH = ($env.PATH | prepend (do {
     mut paths = []
 
+    # /etc/paths
+    if ("/etc/paths" | path exists) {
+        $paths = ($paths | prepend (open /etc/paths | str trim | split row "\n" | where (not $it in $env.PATH)))
+    }
+
     # homebrew
     let brew = "/opt/homebrew"
     if (
