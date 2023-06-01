@@ -116,3 +116,23 @@ let-env PATH = ($env.PATH | prepend (do {
 
     $paths
 }))
+
+def _external_exists [binary] {
+    return ((do { type $binary } | complete).exit_code == 0)
+}
+
+let-env EDITOR = (do {
+    mut candidates = ([
+        hx
+        nvim
+        vim
+        vi
+        nano
+    ] | where { _external_exists $in })
+
+    if ($env.TERM_PROGRAM == "vscode") {
+        $candidates = ($candidates | prepend "code -w")
+    }
+
+    $candidates | first
+})
