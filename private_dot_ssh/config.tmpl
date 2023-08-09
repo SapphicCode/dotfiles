@@ -1,13 +1,11 @@
-Compression yes
-{{- if eq .chezmoi.os "darwin" }}
+{{ if stat (joinPath .chezmoi.homeDir ".colima") -}}
+Include {{ .chezmoi.homeDir }}/.colima/ssh_config
+{{- end }}
+{{ if stat (joinPath .chezmoi.homeDir "Library/Containers/com.maxgoedjen.Secretive.SecretAgent") -}}
 IdentityAgent {{ .chezmoi.homeDir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 {{- end }}
 
+Compression yes
+
 Host blahaj
 Hostname blahaj.cluster.phoenix.sys.qcx.io
-
-Host corepi corepi.tc.qcx.io
-Hostname 100.100.172.31
-
-Host cs30 cs30.tc.qcx.io
-Hostname 192.168.1.2
