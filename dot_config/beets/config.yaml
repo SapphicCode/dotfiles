@@ -15,3 +15,5 @@ replaygain:
   backend: gstreamer
 embedart:
   auto: no
+  maxwidth: 512
+  quality: 90
