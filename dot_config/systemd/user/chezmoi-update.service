@@ -5,4 +5,5 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=chezmoi update --force
+ExecStart=/usr/bin/env chezmoi update --force
+SyslogIdentifier=chezmoi
