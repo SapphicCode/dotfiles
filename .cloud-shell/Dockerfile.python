@@ -1,0 +1,12 @@
+FROM quay.io/sapphiccode/cloud-shell:latest
+
+RUN apk add --no-cache \
+    python3 py3-pip \
+    build-base python3-dev libffi-dev
+
+RUN pip install -U pip && \
+    pip install pipx && \
+    pip cache purge
+
+RUN for pkg in ipython poetry pdm; do pipx install $pkg; done && \
+    pip cache purge

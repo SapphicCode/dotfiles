@@ -1,4 +1,9 @@
 README.md
+
+.cloud-shell
+Earthfile
+.earthlyignore
+
 {{- if ne .chezmoi.os "darwin" }}
 Library
 .local/bin/python
