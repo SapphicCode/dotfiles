@@ -1,24 +1,21 @@
-[user]
-    name = Cassandra
-    email = {{ b64dec "Z2l0QHNhcHBoaWNjby5kZQ==" }}
-    {{- if eq .chezmoi.hostname "Maeve" }}
-    signingkey = B69A68F16DDAB3AA48213748E6D2633207AEE561
-    {{- else if eq .chezmoi.hostname "blahaj" }}
-    signingkey = D3357F09D81FE2AD6F20D4512DE06569FC2EF1CF
-    {{- end }}
-
-[init]
-    defaultBranch = main
-
 [core]
     hooksPath = ~/.config/git/hooks
     pager = delta
+
+[include]
+    path = ~/.config/git/hconfig.{{ lower .chezmoi.hostname }}
+
+[user]
+    name = Cassandra
+    email = {{ b64dec "Z2l0QHNhcHBoaWNjby5kZQ==" }}
+
+[init]
+    defaultBranch = main
 
 [interactive]
     diffFilter = delta --color-only
 
 [commit]
-    gpgsign = true
     template = ~/.config/git/commit_template.txt
 
 [pull]
@@ -36,8 +33,6 @@
 [credential]
     {{- if eq .chezmoi.os "darwin" }}
     helper = osxkeychain
-    {{- else if eq .chezmoi.hostname "GameLap" }}
-    helper = store
     {{- else }}
     helper = libsecret
     {{- end }}

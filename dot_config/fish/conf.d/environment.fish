@@ -14,9 +14,12 @@ if type -q go
 end
 
 # Editors
-if type -q nvim
+if type -q hx
+    set -x EDITOR hx
+else if type -q nvim
     set -x EDITOR nvim
 end
+
 if [ "$TERM_PROGRAM" = "vscode" ]
     set -x EDITOR "code -w"
 end
