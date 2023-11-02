@@ -7,6 +7,11 @@ else if string match -q -e $platform linux; and path is -d /home/linuxbrew/.linu
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 end
 
+# nix
+if path is -d $HOME/.nix/profile/bin
+    fish_add_path -g -m $HOME/.nix-profile/bin
+end
+
 # Go
 if type -q go
     set -x GOPATH $HOME/dev/go
