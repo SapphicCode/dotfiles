@@ -5,7 +5,7 @@ from sys import argv
 # read commit template
 commit_msg = []
 with open(argv[1], "r") as f:
-    commit_msg = f.read().split("\n")
+    commit_msg = f.read().splitlines()
 
 # conventional commits
 if commit_msg[0].startswith("Merge") or commit_msg[0].startswith("Revert"):
@@ -15,6 +15,12 @@ if commit_msg[0].startswith("Merge") or commit_msg[0].startswith("Revert"):
         commit_msg[0] = f"chore: {action} {rest}".replace("remote-tracking ", "")
     if action == "revert":
         commit_msg[0] = f"{action}: {rest}"
+
+if commit_msg[0] == "Squashed commit of the following:":
+    for idx, line in enumerate(commit_msg):
+        commit_msg[idx] = (
+            line.replace("[ci skip]", "").replace("[skip ci]", "").rstrip()
+        )
 
 # write back
 with open(argv[1], "w") as f:
