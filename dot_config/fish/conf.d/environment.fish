@@ -8,7 +8,13 @@ else if string match -q -e $platform linux; and path is -d /home/linuxbrew/.linu
 end
 
 # nix
-if path is -d $HOME/.nix/profile/bin
+## global default profile
+# don't add path if we're on, say, NixOS and path is already properly configured
+if not type -q nix; and path is -d /nix/var/nix/profiles/default/bin
+    fish_add_path -g -m /nix/var/nix/profiles/default/bin
+end
+## local profile
+if path is -d $HOME/.nix-profile/bin
     fish_add_path -g -m $HOME/.nix-profile/bin
 end
 
