@@ -9,26 +9,29 @@ root = subprocess.check_output(
     text=True,
 ).strip()
 
-if shutil.which("pre-commit") and os.path.isfile(
-    os.path.join(root, ".pre-commit-config.yaml")
-):
-    subprocess.check_call(("pre-commit", "run"))
+try:
+    if shutil.which("pre-commit") and os.path.isfile(
+        os.path.join(root, ".pre-commit-config.yaml")
+    ):
+        subprocess.check_call(("pre-commit", "run"))
 
-if (
-    shutil.which("docker")
-    and subprocess.call(
-        ("docker", "stats", "--no-stream"),
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        timeout=1,
-    )
-    == 0
-):
-    if shutil.which("earthly") and os.path.isfile(os.path.join(root, "Earthfile")):
-        targets = (
-            subprocess.check_output(("earthly", "ls"), text=True, cwd=root)
-            .strip()
-            .split("\n")
+    if (
+        shutil.which("docker")
+        and subprocess.call(
+            ("docker", "stats", "--no-stream"),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            timeout=2,
         )
-        if "+pre-commit" in targets:
-            subprocess.check_call(("earthly", "+pre-commit"), cwd=root)
+        == 0
+    ):
+        if shutil.which("earthly") and os.path.isfile(os.path.join(root, "Earthfile")):
+            targets = (
+                subprocess.check_output(("earthly", "ls"), text=True, cwd=root)
+                .strip()
+                .split("\n")
+            )
+            if "+pre-commit" in targets:
+                subprocess.check_call(("earthly", "+pre-commit"), cwd=root)
+except subprocess.TimeoutExpired:
+    pass  # oh well
