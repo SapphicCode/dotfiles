@@ -2,7 +2,7 @@ README.md
 
 .cloud-shell
 Earthfile
-.earthlyignore
+Dockerfile*
 
 {{- if ne .chezmoi.os "darwin" }}
 Library
