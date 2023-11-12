@@ -1,5 +1,13 @@
 set -l platform (uname | string lower)
 
+# sudo
+set sudo "sudo"
+if type -q please
+    set sudo "please"
+else if type -q doas
+    set sudo "doas"
+end
+
 # brew
 if string match -q -e $platform darwin; and path is -d /opt/homebrew
     eval (/opt/homebrew/bin/brew shellenv)
