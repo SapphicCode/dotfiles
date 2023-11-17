@@ -35,8 +35,11 @@ end
 # Editors
 if type -q hx
     set -x EDITOR hx
-else if type -q nvim
+end
+
+if type -q nvim
     set -x EDITOR nvim
+    set -x MANPAGER "nvim +Man!"
 end
 
 if [ "$TERM_PROGRAM" = "vscode" ]
