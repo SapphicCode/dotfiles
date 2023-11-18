@@ -8,7 +8,7 @@ if not type -q docker; and type -q podman
 end
 
 # elevated commands
-if [$(id -u) = 0]
+if [ $(id -u) = 0 ]
     if type -q systemctl
         abbr -g -a systemctl "\$sudo systemctl"
     end
