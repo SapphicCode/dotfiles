@@ -8,7 +8,15 @@ if not type -q docker; and type -q podman
 end
 
 # elevated commands
-abbr -g -a systemctl "\$sudo systemctl"
+if [$(id -u) = 0]
+    if type -q systemctl
+        abbr -g -a systemctl "\$sudo systemctl"
+    end
+    if type -q zfs
+        abbr -g -a zfs "\$sudo zfs"
+        abbr -g -a zpool "\$sudo zpool"
+    end
+end
 
 # rm -> trash
 if type -q trash
