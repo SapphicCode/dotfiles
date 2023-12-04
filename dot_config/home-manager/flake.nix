@@ -18,7 +18,7 @@
       };
       homeConfigurations."deck@hollydeck" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        modules = [ ./home/hollydeck.nix ];
+        modules = [ ./host/hollydeck.nix ];
       };
     };
 }
