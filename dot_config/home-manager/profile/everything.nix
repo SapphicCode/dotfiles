@@ -25,6 +25,7 @@
     ruff
     poetry
     pdm
+    python311Packages.ipython
     pipx # in case of fire break glass
 
     # Elixir
