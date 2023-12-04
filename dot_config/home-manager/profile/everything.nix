@@ -4,6 +4,9 @@
   ];
 
   home.packages = with pkgs; [
+    # more shells!
+    xonsh
+
     # all remaining (occasional use) tools
     lima
     charm
@@ -19,8 +22,10 @@
     python311Full
     python311Packages.black
     python311Packages.isort
-    pipx
     ruff
+    poetry
+    pdm
+    pipx # in case of fire break glass
 
     # Elixir
     elixir
