@@ -1,3 +1,8 @@
+# unset macOS SSH_AUTH_SOCK
+if string match -q "/private/tmp/com.apple.launchd*/Listeners" $SSH_AUTH_SOCK
+    set -e -g SSH_AUTH_SOCK
+end
+
 # CLI application launchers
 if type -q fd
     for app in (fd --max-depth 2 -t directory '\.app$' /Applications ~/Applications)
