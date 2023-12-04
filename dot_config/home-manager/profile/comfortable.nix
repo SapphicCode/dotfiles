@@ -16,6 +16,7 @@
 
     # tools
     fq
+    syncthing
     podman
     watchman
   ];

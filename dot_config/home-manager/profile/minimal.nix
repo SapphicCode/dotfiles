@@ -19,6 +19,7 @@
     zstd
     jq
     yq-go
+    rclone
 
     # dev tools
     nixpkgs-fmt
