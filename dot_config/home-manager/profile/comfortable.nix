@@ -17,5 +17,6 @@
     # tools
     fq
     podman
+    watchman
   ];
 }
