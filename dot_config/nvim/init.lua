@@ -28,8 +28,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	"theacodes/witchhazel", -- color scheme
+
 	{ "cohama/lexima.vim", tag = "v2.1.0" }, -- auto-insert matched characters
-	{ "nvim-telescope/telescope.nvim", tag = "0.1.4", dependencies = { "nvim-lua/plenary.nvim" } },
+	"tpope/vim-sleuth", -- heuristic indentation detection
+
+	{ "nvim-telescope/telescope.nvim", tag = "0.1.5", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
 
 	"neovim/nvim-lspconfig",
 	"creativenull/efmls-configs-nvim",
@@ -49,20 +52,28 @@ require("lazy").setup({
 vim.o.termguicolors = true
 vim.cmd("colorscheme witchhazel-hypercolor")
 
+-- keybinds
+telescope = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", telescope.find_files)
+vim.keymap.set("n", "<leader>fg", telescope.live_grep)
+vim.keymap.set("n", "<leader>fb", telescope.buffers)
+
 -- language server config
-require("lspconfig").efm.setup({
-	init_options = { documentFormatting = true },
-	on_attach = require("lsp-format").on_attach,
-	settings = {
-		rootMarkers = { ".git/" },
-		languages = {
-			lua = {
-				require("efmls-configs.formatters.stylua"),
-			},
-			python = {
-				require("efmls-configs.formatters.isort"),
-				require("efmls-configs.formatters.black"),
+if vim.fn.executable("efm-langserver") then
+	require("lspconfig").efm.setup({
+		init_options = { documentFormatting = true },
+		on_attach = require("lsp-format").on_attach,
+		settings = {
+			rootMarkers = { ".git/" },
+			languages = {
+				lua = {
+					require("efmls-configs.formatters.stylua"),
+				},
+				python = {
+					require("efmls-configs.formatters.isort"),
+					require("efmls-configs.formatters.black"),
+				},
 			},
 		},
-	},
-})
+	})
+end
