@@ -32,7 +32,12 @@ require("lazy").setup({
 	{ "cohama/lexima.vim", tag = "v2.1.0" }, -- auto-insert matched characters
 	"tpope/vim-sleuth", -- heuristic indentation detection
 
-	{ "nvim-telescope/telescope.nvim", tag = "0.1.5", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.5",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {},
+	},
 
 	"neovim/nvim-lspconfig",
 	"creativenull/efmls-configs-nvim",
@@ -73,6 +78,17 @@ if vim.fn.executable("efm-langserver") then
 					require("efmls-configs.formatters.isort"),
 					require("efmls-configs.formatters.black"),
 				},
+				nix = {
+					{
+						formatCommand = "nixpkgs-fmt",
+						formatStdin = true,
+						rootMarkers = {
+							"flake.nix",
+							"shell.nix",
+							"default.nix",
+						},
+					}
+				}
 			},
 		},
 	})
