@@ -24,7 +24,7 @@
         pkgs = nixpkgs.legacyPackages."aarch64-linux";
         modules = [ ./host/generic-server.nix ];
       };
-      "generic-server-amd64" = home-manager.lib.homeMangerConfiguration {
+      "generic-server-amd64" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = [ ./host/generic-server.nix ];
       };
