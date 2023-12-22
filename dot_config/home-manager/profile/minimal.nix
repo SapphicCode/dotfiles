@@ -2,13 +2,16 @@
   home.packages = with pkgs; [
     # bare minimum
     git
+    delta # pager for git
     chezmoi
 
     # shell
     fish
     starship
+    direnv
 
     # TUIs
+    tmux
     htop
     ncdu
     neovim
