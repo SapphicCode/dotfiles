@@ -16,7 +16,6 @@
     exiftool
     libjxl
     nb
-    czkawka
 
     # Python
     python311Full
@@ -27,6 +26,13 @@
     pdm
     python311Packages.ipython
     pipx # in case of fire break glass
+
+    # cloud utils
+    awscli2
+
+    # database development
+    mongosh
+    postgresql_16 # `psql`
 
     # Elixir
     elixir

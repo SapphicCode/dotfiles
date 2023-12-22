@@ -8,6 +8,8 @@
     gnugrep
   ];
 
+  services.syncthing.enable = true;
+
   imports = [
     ../profile/everything.nix
   ];
