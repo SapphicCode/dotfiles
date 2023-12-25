@@ -8,3 +8,6 @@ Dockerfile*
 Library
 .local/bin/python
 {{- end }}
+
+flake.nix
+flake.lock

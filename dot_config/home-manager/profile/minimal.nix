@@ -23,6 +23,8 @@
     jq
     yq-go
     rclone
+    mkpasswd
+    pwgen
 
     # dev tools
     nixpkgs-fmt
