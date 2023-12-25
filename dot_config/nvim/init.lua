@@ -64,7 +64,7 @@ vim.keymap.set("n", "<leader>fg", telescope.live_grep)
 vim.keymap.set("n", "<leader>fb", telescope.buffers)
 
 -- language server config
-if vim.fn.executable("efm-langserver") then
+if vim.fn.executable("efm-langserver") == 1 then
 	require("lspconfig").efm.setup({
 		init_options = { documentFormatting = true },
 		on_attach = require("lsp-format").on_attach,
@@ -87,8 +87,8 @@ if vim.fn.executable("efm-langserver") then
 							"shell.nix",
 							"default.nix",
 						},
-					}
-				}
+					},
+				},
 			},
 		},
 	})
