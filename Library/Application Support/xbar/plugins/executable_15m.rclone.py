@@ -7,6 +7,7 @@ import subprocess
 os.environ["PATH"] = ":".join(
     [
         os.path.expanduser("~/.local/bin"),
+        os.path.expanduser("~/.nix-profile/bin"),
         "/opt/homebrew/bin",
         *os.environ["PATH"].split(":"),
     ],
