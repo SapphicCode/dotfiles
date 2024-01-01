@@ -51,6 +51,8 @@ require("lazy").setup({
 			date_format = "%Y-%m-%d %H:%M",
 		},
 	}, -- blame on cursor line
+
+	{ "dstein64/vim-startuptime" },
 })
 
 -- witch hazel
