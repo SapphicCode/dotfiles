@@ -69,6 +69,11 @@ if [ -d $HOME/dev/scripts ]
     fish_add_path -g -m $HOME/dev/scripts
 end
 
+# rclone
+if type -q rclone
+    set -x RCLONE_FAST_LIST 1
+end
+
 # source platform-specific scripts
 set -l platform_script $HOME/.config/fish/platform/$platform.fish
 if test -f $platform_script
