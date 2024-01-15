@@ -74,6 +74,11 @@ if type -q rclone
     set -x RCLONE_FAST_LIST 1
 end
 
+# podman socket for docker
+if type -q podman; and type -q docker; and test -z $DOCKER_HOST; and [ $USER != "root" ]
+    set -x DOCKER_HOST unix:///run/user/(id -u)/podman/podman.sock
+end
+
 # source platform-specific scripts
 set -l platform_script $HOME/.config/fish/platform/$platform.fish
 if test -f $platform_script
