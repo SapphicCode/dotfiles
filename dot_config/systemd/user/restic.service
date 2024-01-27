@@ -1,0 +1,11 @@
+[Unit]
+Description=Home directory backup service
+ConditionFileNotEmpty=%h/.age/id/unattended
+ConditionFileNotEmpty=%h/.config/restic/restic.env.age
+
+[Service]
+SyslogIdentifier=restic
+PrivateTmp=true
+ExecStartPre=/usr/bin/env age -i %h/.age/id/unattended -d -o %T/restic.env %h/.config/restic/restic.env.age
+ExecStart=/usr/bin/env bash -o allexport -c ". %T/restic.env && restic backup -x --exclude-caches --exclude-file=%h/.config/restic/excludes.txt %h"
+SuccessExitStatus=0 3

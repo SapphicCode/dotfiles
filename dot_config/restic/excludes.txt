@@ -5,23 +5,12 @@ $HOME/Library/Containers/**/Library/Caches
 $HOME/Library/Group Containers/**/Library/Caches
 $HOME/Library/Trial
 $HOME/.kube/cache
-$HOME/Library/Application Support/**/Cache
-$HOME/Library/Application Support/**/Code Cache
-$HOME/Library/Application Support/**/GPUCache
-$HOME/Library/Application Support/**/CacheStorage
-$HOME/Library/Application Support/**/ScriptCache
-$HOME/Library/Application Support/Code/Cached*
+
+# Chrome / Electron caches
+$HOME/Library/Application Support/*/*Cache*
+$HOME/.config/*/*Cache*
 
 # Not a cache, but Electron:
-$HOME/.config/google-chrome
-$HOME/.config/google-chrome-unstable
-$HOME/.config/vivaldi
-$HOME/.config/Slack
-$HOME/.config/Code
-$HOME/.config/VIA
-$HOME/.config/discord
-$HOME/.config/obsidian
-$HOME/.config/Lens
 $HOME/.local/share/KotatogramDesktop
 $HOME/.mozilla
 

@@ -1,0 +1,9 @@
+[Unit]
+Description=Hourly backups
+
+[Timer]
+OnStartupSec=15m
+OnUnitInactiveSec=1h
+
+[Install]
+WantedBy=timers.target
