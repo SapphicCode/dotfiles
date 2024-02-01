@@ -20,7 +20,6 @@ if string match -q -e $platform darwin; and path is -d /opt/homebrew
 else if string match -q -e $platform linux; and path is -d /home/linuxbrew/.linuxbrew
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 end
-
 ## nix
 ### global default profile
 # don't add path if we're on, say, NixOS and path is already properly configured
@@ -30,6 +29,11 @@ end
 ### local profile
 if path is -d $HOME/.nix-profile/bin
     fish_add_path -g -m $HOME/.nix-profile/bin
+end
+
+# fix $SHELL
+if type -q fish
+    set -x SHELL (type -p fish)
 end
 
 # Go
