@@ -32,7 +32,7 @@ done
 
 # if we're in an SSH login shell, and fish exists, launch fish
 if shopt -q login_shell && [ "${SSH_CONNECTION}" ] && type -P fish > /dev/null; then
-    exec fish
+    exec fish -l
 fi
 
 # starship
