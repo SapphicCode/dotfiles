@@ -37,11 +37,11 @@ end
 
 # Editors
 if type -q hx
-    set -x EDITOR hx
+    set -x EDITOR (type -p hx)
 end
 
 if type -q nvim
-    set -x EDITOR nvim
+    set -x EDITOR (type -p nvim)
     set -x MANPAGER "nvim +Man!"
 end
 
