@@ -1,0 +1,7 @@
+#       Serial: 15956181, Slot: 1
+#         Name: Personal
+#      Created: Wed, 14 Feb 2024 17:15:48 +0000
+#   PIN policy: Once   (A PIN is required once per session, if set)
+# Touch policy: Always (A physical touch is required for every decryption)
+#    Recipient: age1yubikey1qwre9j7059g6mhzd05wjsmsf8yya6v8nteqleskls2e4uaajp6g4k7r3dzz
+AGE-PLUGIN-YUBIKEY-164U0XQYZH74UP3C4QUQC8
