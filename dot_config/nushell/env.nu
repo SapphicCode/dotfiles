@@ -1,7 +1,7 @@
 # Nushell Environment Config File
 
 # Set up extra PATHs
-$env.PATH = ($env.PATH | prepend (do {
+$env.PATH = ($env.PATH | split row ":" | prepend (do {
     mut paths = []
 
     # /etc/paths
@@ -31,10 +31,6 @@ $env.PATH = ($env.PATH | prepend (do {
     $paths
 }))
 
-def _external_exists [binary] {
-    return ((do { type $binary } | complete).exit_code == 0)
-}
-
 $env.EDITOR = (do {
     mut candidates = ([
         hx
@@ -42,16 +38,11 @@ $env.EDITOR = (do {
         vim
         vi
         nano
-    ] | where { _external_exists $in })
+    ] | where { (which $in | length) != 0 })
 
-    if ($env.TERM_PROGRAM == "vscode") {
+    if (($env | get -i TERM_PROGRAM) == "vscode") {
         $candidates = ($candidates | prepend "code -w")
     }
 
     $candidates | first
 })
-
-# Install starship
-if (_external_exists starship) {
-    starship init nu | save -f ~/.cache/starship/init.nu
-}
