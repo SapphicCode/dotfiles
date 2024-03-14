@@ -43,6 +43,10 @@ require("lazy").setup({
 	"creativenull/efmls-configs-nvim",
 	{ "lukas-reineke/lsp-format.nvim", opts = {} }, -- auto-formatting
 
+	-- syntax highlighting
+	"nvim-treesitter/nvim-treesitter",
+	{ "LhKipp/nvim-nu", config = false },
+
 	{ "lewis6991/gitsigns.nvim", opts = {} }, -- git line changes in line number gutter
 	{
 		"f-person/git-blame.nvim",
@@ -82,7 +86,7 @@ if vim.fn.executable("efm-langserver") == 1 then
 				},
 				nix = {
 					{
-						formatCommand = "nixpkgs-fmt",
+						formatCommand = "alejandra",
 						formatStdin = true,
 						rootMarkers = {
 							"flake.nix",
@@ -94,4 +98,16 @@ if vim.fn.executable("efm-langserver") == 1 then
 			},
 		},
 	})
+end
+if vim.fn.executable("nu") == 1 then
+	require("lspconfig").nushell.setup({})
+end
+if vim.fn.executable("gcc") == 1 then
+	require("nvim-treesitter.configs").setup({
+		highlight = { enable = true },
+		ensure_installed = { "lua", "vim", "vimdoc", "python", "nu" },
+	})
+end
+if vim.fn.executable("pyright") == 1 then
+	require("lspconfig").pyright.setup({})
 end
