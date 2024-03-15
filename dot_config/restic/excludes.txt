@@ -25,6 +25,7 @@ $HOME/.platformio
 $HOME/.colima
 $HOME/.lima
 $HOME/.openjfx
+$HOME/.ollama
 node_modules
 site-packages
 *.pyc
