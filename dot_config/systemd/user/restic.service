@@ -8,5 +8,6 @@ SyslogIdentifier=restic
 PrivateTmp=true
 ExecStartPre=/usr/bin/env age -i %h/.age/id/unattended -d -o %T/restic.env %h/.config/restic/restic.env.age
 ExecStart=/usr/bin/env bash -o allexport -c ". %T/restic.env && restic backup -x --exclude-caches --exclude-file=%h/.config/restic/excludes.txt %h"
-ExecStop=/usr/bin/env sleep 5 # restic orphans rclone, hope this is enough time to let it shut down
+ExecStop=/usr/bin/env sleep 5
+# restic orphans rclone, hope this is enough time to let it shut down
 SuccessExitStatus=0 3
