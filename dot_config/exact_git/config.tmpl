@@ -31,21 +31,18 @@
     autoStash = true
 
 [credential]
-    {{- if eq .chezmoi.os "darwin" }}
     helper = osxkeychain
-    {{- else }}
     helper = libsecret
-    {{- end }}
+    helper = netrc
 
 [includeIf "gitdir:~/dev/work/"]
     path = ~/.config/git/work/config
 [includeIf "gitdir:/Volumes/Work/"]
     path = ~/.config/git/work/config
 
-{{ if lookPath "git-lfs" -}}
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
-{{- end }}
+
