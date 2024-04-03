@@ -91,7 +91,12 @@ end
 
 # podman socket for docker
 if type -q podman; and type -q docker; and test -z $DOCKER_HOST; and [ $USER != "root" ]
-    set -x DOCKER_HOST unix:///run/user/(id -u)/podman/podman.sock
+    for path in /run/user/(id -u)/podman/podman.sock $HOME/.local/share/containers/podman/machine/qemu/podman.sock
+        if [ -S $path ]
+            set -x DOCKER_HOST unix://$path
+            break
+        end
+    end
 end
 
 # source platform-specific scripts
