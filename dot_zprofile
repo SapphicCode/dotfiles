@@ -1,0 +1,8 @@
+# MacPorts
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+
+# homebrew
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+# Nix
+export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
