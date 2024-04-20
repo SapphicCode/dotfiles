@@ -43,5 +43,5 @@ if type -q git
     abbr -g -a gcm 'git checkout $(_git_main); and git pull'
     abbr -g -a gmm 'git fetch; and git merge origin/HEAD'
     abbr -g -a gp "git push"
-    abbr -g -a gpf "git push --force"
+    abbr -g -a gpf "git push --force-with-lease"
 end
