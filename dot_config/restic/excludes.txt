@@ -5,10 +5,15 @@ $HOME/Library/Containers/**/Library/Caches
 $HOME/Library/Group Containers/**/Library/Caches
 $HOME/Library/Trial
 $HOME/.kube/cache
+$HOME/.var/app/*/cache
 
 # Chrome / Electron caches
-$HOME/Library/Application Support/*/*Cache*
-$HOME/.config/*/*Cache*
+$HOME/Library/Application Support/**/*Cache
+$HOME/Library/Application Support/**/CacheStorage
+$HOME/.config/**/*Cache
+$HOME/.config/**/CacheStorage
+$HOME/.var/app/**/*Cache
+$HOME/.var/app/**/CacheStorage
 
 # Not a cache, but Electron:
 $HOME/.local/share/KotatogramDesktop
@@ -36,8 +41,6 @@ $HOME/dev/go
 # Downloads
 $HOME/Downloads
 $HOME/dev/tmp
-MultiMC/assets
-MultiMC/libraries
 $HOME/.factorio/temp
 $HOME/Library/Developer
 $HOME/Library/Application Support/Google/DriveFS
@@ -51,7 +54,6 @@ $HOME/.Trash
 # Programs
 $HOME/Applications
 $HOME/Games
-$HOME/.var/app
 $HOME/.local/share/Steam
 $HOME/Library/Application Support/Steam
 $HOME/.local/share/containers
@@ -60,3 +62,8 @@ $HOME/.config/kustomize/plugin
 
 # Backups (ensure these are copied elsewhere!)
 $HOME/Library/Application Support/MobileSync/Backup
+
+# Prism launcher assets
+PrismLauncher/assets
+PrismLauncher/cache
+PrismLauncher/libraries
