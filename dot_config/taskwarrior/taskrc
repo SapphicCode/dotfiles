@@ -1,0 +1,20 @@
+# real .taskrc provided by chezmoi
+
+# Define contexts
+context.work.read=(project:Work and -major) or (+work and -major) or urgency > 5
+context.work.write=+work
+context.home.read=project.not:Work and -work
+
+# Define UDAs
+uda.estimate.type=duration
+uda.estimate.label=Est
+uda.ticket.type=string
+uda.ticket.label=Ticket
+uda.repo.type=string
+uda.repo.label=SCM repository
+uda.branch.type=string
+uda.branch.label=SCM branch
+
+# Other customizations
+weekstart=Monday
+reserved.lines=3

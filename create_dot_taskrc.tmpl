@@ -1,0 +1,6 @@
+# "default" taskrc which chezmoi allows to drift
+
+include {{ joinPath .chezmoi.homeDir ".config" "taskwarrior" "taskrc" }}
+
+news.version=2.6.0
+context=home
