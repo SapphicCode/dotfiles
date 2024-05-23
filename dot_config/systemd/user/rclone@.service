@@ -3,9 +3,11 @@ Description=rclone mount %i
 
 [Service]
 Type=notify
-ExecStartPre=mkdir -p %h/mnt/%i
-ExecStart=rclone mount --vfs-cache-mode=full %i: %h/mnt/%i
-ExecStopPost=-rm -d %h/mnt/%i
+SyslogIdentifier=%N
+ExecStartPre=/usr/bin/env mkdir -p %h/mnt/%i
+ExecStart=/usr/bin/env rclone mount --vfs-cache-mode=full %i: %h/mnt/%i
+ExecStopPost=-/usr/bin/env umount -l %h/mnt/%i
+ExecStopPost=-/usr/bin/env rm -d %h/mnt/%i
 
 [Install]
 WantedBy=default.target
