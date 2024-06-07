@@ -30,6 +30,10 @@ end
 if path is -d $HOME/.nix-profile/bin
     fish_add_path -g -m $HOME/.nix-profile/bin
 end
+## bump security wrappers to the front again on NixOS
+if grep -q ID=nixos /etc/os-release &> /dev/null; and path is -d /run/wrappers/bin
+    fish_add_path -g -m /run/wrappers/bin
+end
 
 # fix $SHELL
 if type -q fish
