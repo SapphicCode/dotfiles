@@ -6,3 +6,8 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
 # Nix
 export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
+
+# launch fish if we're in an SSH connection
+if [[ -o login && -o interactive && "${SSH_CONNECTION}" ]]; then
+    exec fish -l
+fi
