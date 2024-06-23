@@ -30,8 +30,8 @@ for brew in /opt/homebrew /home/linuxbrew/.linuxbrew; do
     fi
 done
 
-# if we're in an SSH login shell, and fish exists, launch fish
-if shopt -q login_shell && [ "${SSH_CONNECTION}" ] && type -P fish > /dev/null; then
+# if we're in an interactive shell, and fish exists, launch fish
+if echo "${SHELL}" | grep -q bash && tty -s && type -P fish > /dev/null; then
     exec fish -l
 fi
 
