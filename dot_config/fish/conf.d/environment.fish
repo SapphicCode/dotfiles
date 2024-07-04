@@ -112,7 +112,7 @@ if [ $SSH_CLIENT ]
                 set -f -x SSH_AUTH_SOCK $potential_agent
             end
         end
-        command git $args
+        command git $argv
         return $status
     end
 end
