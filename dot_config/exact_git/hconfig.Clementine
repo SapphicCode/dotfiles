@@ -1,5 +1,2 @@
-[commit]
-gpgsign = true
-
 [user]
-signingkey = 5E3E9D1549A74DD3
+signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIARVkybGQcECVr5oZ4m3GmfwdRdrPXcEg7OToUlHVKXr"

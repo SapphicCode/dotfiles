@@ -8,6 +8,7 @@
 [user]
     name = Cassandra
     email = {{ b64dec "Z2l0QHNhcHBoaWNjby5kZQ==" }}
+    signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO9xeCEREM1kRjHme9h6w41x/DayIQYV5+Sb1GsJhW9k"
 
 [init]
     defaultBranch = main
@@ -17,6 +18,10 @@
 
 [commit]
     template = ~/.config/git/commit_template.txt
+    gpgsign = true
+
+[gpg]
+    format = "ssh"
 
 [pull]
     rebase = true
@@ -29,6 +34,9 @@
 
 [rebase]
     autoStash = true
+
+[branch]
+    sort = -committerdate
 
 [credential]
 {{- if eq .chezmoi.os "darwin" }}

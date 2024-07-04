@@ -8,3 +8,7 @@ ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBM3PWYSf
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH68AGzViml0l9zU7l4RYhps5VLuZZ160Bt94IZ45j/U Shortcuts on iPhone
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIETwPh065+QKLUNoJJcl/7UmgYneh7AFzBglYylOc0BE Shortcuts on iPad
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHqIe0wYrmcfkQDda3lpDy87nFW8zSzJyg4zAhltbH4d Shortcuts on Maeve
+
+{{- if (eq .chezmoi.hostname "Clementine") }}
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIARVkybGQcECVr5oZ4m3GmfwdRdrPXcEg7OToUlHVKXr
+{{- end }}
