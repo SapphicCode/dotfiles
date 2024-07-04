@@ -103,6 +103,20 @@ if type -q podman; and type -q docker; and test -z $DOCKER_HOST; and [ $USER != 
     end
 end
 
+# git: fix edge-cases with reattached shells after SSH reconnects
+if [ $SSH_CLIENT ]
+    function git --wraps git
+        if not ssh-add -l &>/dev/null
+            set -l potential_agent (fd -1 --full-path 'ssh-.+/agent.\d+' /tmp)
+            if [ $potential_agent ]
+                set -f -x SSH_AUTH_SOCK $potential_agent
+            end
+        end
+        command git $args
+        return $status
+    end
+end
+
 # source platform-specific scripts
 set -l platform_script $HOME/.config/fish/platform/$platform.fish
 if test -f $platform_script
