@@ -5,11 +5,13 @@ import shutil
 import subprocess
 import sys
 
+stashed = False
+changes = False
+
 root = subprocess.check_output(
     ("git", "rev-parse", "--show-toplevel"),
     text=True,
 ).strip()
-
 try:
     # pre-commit
     if shutil.which("pre-commit") and os.path.isfile(
@@ -55,6 +57,10 @@ try:
         if "pre-commit" in recipes:
             subprocess.check_call(("just", "pre-commit"), cwd=root)
 
+except subprocess.TimeoutExpired:
+    pass  # oh well
+
+finally:
     changes = subprocess.call(("git", "diff", "--stat")) != 0
 
     # pop stash
@@ -64,6 +70,3 @@ try:
     if changes:
         print("\nHooks have modified files.")
         sys.exit(1)
-
-except subprocess.TimeoutExpired:
-    pass  # oh well
