@@ -36,6 +36,6 @@ if echo "${SHELL}" | grep -q bash && tty -s && type -P fish > /dev/null; then
 fi
 
 # starship
-if type starship &> /dev/null; then
+if tty -s && type starship &> /dev/null; then
   eval "$(starship init bash)"
 fi
