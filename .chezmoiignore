@@ -3,6 +3,7 @@ README.md
 .cloud-shell
 Earthfile
 Dockerfile*
+justfile
 
 {{- if ne .chezmoi.os "darwin" }}
 Library
