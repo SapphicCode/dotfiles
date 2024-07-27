@@ -23,19 +23,22 @@ fi
 
 unset rc
 
-# brew
-for brew in /opt/homebrew /home/linuxbrew/.linuxbrew; do
-    if [ -d $brew ]; then
-        eval "$(${brew}/bin/brew shellenv)"
+# make bash play dumb unless intentionally launched by user
+if [ "${SSH_CONNECTION}${TERM_PROGRAM}" ] && tty -s; then
+    # if we've not launched from fish and fish exists, exec fish
+    if echo "${SHELL}" | grep -q bash && tty -s && type -P fish > /dev/null; then
+        exec fish -l
+    end
+
+    # add brew to PATH
+    for brew in /opt/homebrew /home/linuxbrew/.linuxbrew; do
+        if [ -d $brew ]; then
+            eval "$(${brew}/bin/brew shellenv)"
+        fi
+    done
+
+    # hook starship
+    if tty -s && type starship &> /dev/null; then
+    eval "$(starship init bash)"
     fi
-done
-
-# if we're in an interactive shell, and fish exists, launch fish
-if echo "${SHELL}" | grep -q bash && tty -s && type -P fish > /dev/null; then
-    exec fish -l
-fi
-
-# starship
-if tty -s && type starship &> /dev/null; then
-  eval "$(starship init bash)"
 fi
