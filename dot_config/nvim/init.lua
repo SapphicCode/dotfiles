@@ -70,44 +70,46 @@ vim.keymap.set("n", "<leader>fg", telescope.live_grep)
 vim.keymap.set("n", "<leader>fb", telescope.buffers)
 
 -- language server config
-if vim.fn.executable("efm-langserver") == 1 then
-	require("lspconfig").efm.setup({
-		init_options = { documentFormatting = true },
-		on_attach = require("lsp-format").on_attach,
-		settings = {
-			rootMarkers = { ".git/" },
-			languages = {
-				lua = {
-					require("efmls-configs.formatters.stylua"),
-				},
-				python = {
-					require("efmls-configs.formatters.isort"),
-					require("efmls-configs.formatters.black"),
-				},
-				nix = {
-					{
-						formatCommand = "alejandra",
-						formatStdin = true,
-						rootMarkers = {
-							"flake.nix",
-							"shell.nix",
-							"default.nix",
+if vim.env.NVIM_NO_LSP == nil then
+	if vim.fn.executable("efm-langserver") == 1 then
+		require("lspconfig").efm.setup({
+			init_options = { documentFormatting = true },
+			on_attach = require("lsp-format").on_attach,
+			settings = {
+				rootMarkers = { ".git/" },
+				languages = {
+					lua = {
+						require("efmls-configs.formatters.stylua"),
+					},
+					python = {
+						require("efmls-configs.formatters.isort"),
+						require("efmls-configs.formatters.black"),
+					},
+					nix = {
+						{
+							formatCommand = "alejandra",
+							formatStdin = true,
+							rootMarkers = {
+								"flake.nix",
+								"shell.nix",
+								"default.nix",
+							},
 						},
 					},
 				},
 			},
-		},
-	})
-end
-if vim.fn.executable("nu") == 1 then
-	require("lspconfig").nushell.setup({})
-end
-if vim.fn.executable("gcc") == 1 then
-	require("nvim-treesitter.configs").setup({
-		highlight = { enable = true },
-		ensure_installed = { "lua", "vim", "vimdoc", "python", "nu" },
-	})
-end
-if vim.fn.executable("pyright") == 1 then
-	require("lspconfig").pyright.setup({})
+		})
+	end
+	if vim.fn.executable("nu") == 1 then
+		require("lspconfig").nushell.setup({})
+	end
+	if vim.fn.executable("gcc") == 1 then
+		require("nvim-treesitter.configs").setup({
+			highlight = { enable = true },
+			ensure_installed = { "lua", "vim", "vimdoc", "python", "nu" },
+		})
+	end
+	if vim.fn.executable("pyright") == 1 then
+		require("lspconfig").pyright.setup({})
+	end
 end
