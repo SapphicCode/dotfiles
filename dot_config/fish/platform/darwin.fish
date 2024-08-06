@@ -13,6 +13,11 @@ if [ -z $SSH_CLIENT ] # check we're not remote
     end
 end
 
+# iTerm shell integration
+if status is-interactive; and [ $TERM_PROGRAM = "iTerm.app" ]
+    source ~/.config/fish/iterm_integration.fish
+end
+
 # CLI application launchers
 if type -q fd
     for app in (fd --max-depth 2 -t directory '\.app$' /Applications ~/Applications)

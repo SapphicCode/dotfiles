@@ -87,6 +87,9 @@ end
 if [ -d $HOME/dev/scripts ]
     fish_add_path -g -m $HOME/dev/scripts
 end
+if [ -d $HOME/dev/1p/sandbox/scripts ]
+    fish_add_path -g -m $HOME/dev/1p/sandbox/scripts
+end
 
 # rclone
 if type -q rclone
