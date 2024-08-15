@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# wrapper script to set up SSH_AUTH_SOCK for Git under various conditions
+
+set -eo pipefail
+
+# remove ourselves from PATH to avoid recursion
+this=$(dirname $0)
+PATH=$(echo "$PATH" | sed -e "s#$this:##g")
+
+platform=$(uname)
+
+if ! [ "$SSH_CLIENT" ]; then
+    op_linux="$HOME/.1password/agent.sock"
+    if [ "$platform" = "Linux" ] && [ -e "$op_linux" ]; then
+        export SSH_AUTH_SOCK="$op_linux"
+    fi
+
+    op_darwin="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+    if [ "$platform" = "Darwin" ] && [ -e "$op_darwin" ]; then
+        export SSH_AUTH_SOCK="$op_darwin"
+    fi
+fi
+
+exec git "$@"
