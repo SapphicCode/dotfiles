@@ -5,10 +5,11 @@ Earthfile
 Dockerfile*
 justfile
 
-{{- if ne .chezmoi.os "darwin" }}
+{{ if ne .chezmoi.os "darwin" }}
 Library
 .local/bin/python
-{{- end }}
+.local/bin/tailscale
+{{ end }}
 
 flake.nix
 flake.lock
