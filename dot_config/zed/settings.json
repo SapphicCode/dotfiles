@@ -1,0 +1,34 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `zed: Open Default Settings` command
+// from the command palette
+{
+  "features": {
+    "inline_completion_provider": "none"
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 14,
+  "buffer_font_family": "Fira Code",
+  "theme": {
+    "mode": "dark",
+    "light": "Ayu Light",
+    "dark": "Ayu Dark"
+  },
+  "autosave": "on_focus_change",
+  "terminal": {
+    "shell": {
+      "with_arguments": {
+        "program": "fish",
+        "args": ["-l"]
+      }
+    }
+  },
+  "languages": {
+    "HTML": { "prettier": {} },
+    "Nix": { "tab_size": 2 }
+  }
+}
