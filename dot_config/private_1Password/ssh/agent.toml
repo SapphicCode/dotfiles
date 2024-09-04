@@ -30,6 +30,3 @@
 #  https://developer.1password.com/docs/ssh/agent/config
 [[ssh-keys]]
 account = "my.1password.com"
-
-[[ssh-keys]]
-account = "aifora.1password.com"
