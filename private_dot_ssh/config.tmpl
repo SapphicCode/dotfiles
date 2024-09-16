@@ -1,18 +1,14 @@
 Compression yes
 
 Host blahaj
-Hostname blahaj.cluster.phoenix.sys.qcx.io
+Hostname blahaj.sapphiccode.net
+
+Host deck
+Hostname hollydeck.loc.tc.qcx.io
+User deck
 
 Host sunhome
 Hostname 100.66.158.81
 
 Host cab
 Hostname 100.87.233.8
-
-Host w
-Hostname 100.65.63.9
-User {{ b64dec "Y2Fzc2FuZHJhLmJlZWxlbg==" }}
-ForwardAgent yes
-{{ if stat (joinPath .chezmoi.homeDir "Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock") -}}
-IdentityAgent "{{ .chezmoi.homeDir }}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-{{- end }}
