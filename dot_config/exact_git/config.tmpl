@@ -50,12 +50,15 @@
 {{- end }}
     helper = netrc
 
-[includeIf "gitdir:~/dev/work/"]
-    path = ~/.config/git/work/config
 [includeIf "gitdir:/Volumes/Work/"]
     path = ~/.config/git/work/config
+[includeIf "gitdir:/Volumes/Work/"]
+    path = /Volumes/Work/.gitconfig
+
 [includeIf "gitdir:/work/"]
     path = ~/.config/git/work/config
+[includeIf "gitdir:/work/"]
+    path = /work/.gitconfig
 
 [filter "lfs"]
     clean = git-lfs clean -- %f
