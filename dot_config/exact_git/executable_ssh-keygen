@@ -22,4 +22,4 @@ if ! [ "$SSH_CLIENT" ]; then
     fi
 fi
 
-exec git "$@"
+exec ssh-keygen "$@"

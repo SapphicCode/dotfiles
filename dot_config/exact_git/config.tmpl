@@ -23,6 +23,9 @@
 [gpg]
     format = "ssh"
 
+[gpg.ssh]
+    program = "{{ .chezmoi.homeDir }}/.config/git/ssh-keygen"
+
 [pull]
     rebase = true
 
