@@ -66,3 +66,15 @@
     process = git-lfs filter-process
     required = true
 
+[alias]
+    wip = commit --no-verify -m "wip" .
+    back = checkout @{-1}
+
+    wt = worktree
+
+[credential "https://github.com"]
+    helper = 
+    helper = !~/.nix-profile/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+    helper = 
+    helper = !~/.nix-profile/bin/gh auth git-credential
