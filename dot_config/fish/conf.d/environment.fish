@@ -97,10 +97,10 @@ if type -q rclone
 end
 
 # podman socket for docker
-if type -q podman; and type -q docker; and test -z $DOCKER_HOST; and [ $USER != "root" ]
+if type -q podman; and type -q docker; and not docker context list --format '{{ .Name }}' 2>/dev/null | grep -q podman; and [ $USER != root ]
     for path in /run/user/(id -u)/podman/podman.sock $HOME/.local/share/containers/podman/machine/qemu/podman.sock
         if [ -S $path ]
-            set -x DOCKER_HOST unix://$path
+            docker context create podman --docker="host=unix://$path" &>/dev/null
             break
         end
     end
@@ -125,4 +125,3 @@ set -l platform_script $HOME/.config/fish/platform/$platform.fish
 if test -f $platform_script
     source $platform_script
 end
-
