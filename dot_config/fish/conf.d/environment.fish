@@ -47,16 +47,14 @@ if type -q go
 end
 
 # Editors
-if type -q hx
-    set -x EDITOR (type -p hx)
-end
-
 if type -q nvim
-    set -x EDITOR (type -p nvim)
+    if not set -U -q EDITOR &> /dev/null
+        set -U -x EDITOR (type -p nvim)
+    end
     set -x MANPAGER "nvim +Man!"
 end
 
-if [ "$TERM_PROGRAM" = "vscode" ]
+if [ "$TERM_PROGRAM" = vscode ]
     set -x EDITOR "code -w"
 end
 
