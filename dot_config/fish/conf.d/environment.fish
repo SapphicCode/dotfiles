@@ -48,10 +48,14 @@ end
 
 # Editors
 if type -q nvim
-    if not set -U -q EDITOR &> /dev/null
+    if not set -U -q EDITOR &>/dev/null
         set -U -x EDITOR (type -p nvim)
     end
     set -x MANPAGER "nvim +Man!"
+end
+# prefer universal over global variable in this case
+if set -g -q EDITOR &>/dev/null
+    set -g --erase EDITOR
 end
 
 if [ "$TERM_PROGRAM" = vscode ]
