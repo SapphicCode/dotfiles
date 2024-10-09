@@ -32,7 +32,7 @@ end
 # git
 if type -q git
     function _git_main
-        git rev-parse --abbrev-ref origin/HEAD | string split -r -m1 -f2 '/'
+        git rev-parse --abbrev-ref origin/HEAD | string split -r -m1 -f2 /
     end
 
     abbr -g -a ga "git add"

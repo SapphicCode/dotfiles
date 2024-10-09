@@ -6,11 +6,11 @@ end
 set -l platform (uname | string lower)
 
 # sudo
-set sudo "sudo"
+set sudo sudo
 if type -q please
-    set sudo "please"
+    set sudo please
 else if type -q doas
-    set sudo "doas"
+    set sudo doas
 end
 
 # global PATHs
@@ -31,7 +31,7 @@ if path is -d $HOME/.nix-profile/bin
     fish_add_path -g -m $HOME/.nix-profile/bin
 end
 ## bump security wrappers to the front again on NixOS
-if grep -q ID=nixos /etc/os-release &> /dev/null; and path is -d /run/wrappers/bin
+if grep -q ID=nixos /etc/os-release &>/dev/null; and path is -d /run/wrappers/bin
     fish_add_path -g -m /run/wrappers/bin
 end
 
@@ -47,7 +47,7 @@ set -x CGO_ENABLED 0
 # Editors
 if type -q nvim
     if not set -U -q EDITOR &>/dev/null
-        set -U -x EDITOR (type -p nvim)
+        set -U -x EDITOR nvim
     end
     set -x MANPAGER "nvim +Man!"
 end
