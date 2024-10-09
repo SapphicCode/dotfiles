@@ -41,10 +41,8 @@ if type -q fish
 end
 
 # Go
-if type -q go
-    set -x GOPATH $HOME/dev/go
-    set -x CGO_ENABLED 0
-end
+set -x GOPATH $HOME/dev/go
+set -x CGO_ENABLED 0
 
 # Editors
 if type -q nvim
