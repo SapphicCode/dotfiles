@@ -14,6 +14,8 @@ $HOME/.config/**/*Cache
 $HOME/.config/**/CacheStorage
 $HOME/.var/app/**/*Cache
 $HOME/.var/app/**/CacheStorage
+$HOME/AppData/Roaming/**/*Cache
+$Home/AppData/Roaming/**/CacheStorage
 
 # Not a cache, but Electron:
 $HOME/.local/share/KotatogramDesktop
@@ -67,3 +69,7 @@ $HOME/Library/Application Support/MobileSync/Backup
 PrismLauncher/assets
 PrismLauncher/cache
 PrismLauncher/libraries
+
+# Windows
+$HOME/AppData/Local
+$HOME/AppData/LocalLow
