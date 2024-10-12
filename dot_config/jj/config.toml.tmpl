@@ -1,0 +1,13 @@
+[user]
+name = "Cassandra"
+email = "git@sapphicco.de"
+
+[signing]
+sign-all = true
+backend = "ssh"
+key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO9xeCEREM1kRjHme9h6w41x/DayIQYV5+Sb1GsJhW9k"
+
+[signing.backends]
+
+[signing.backends.ssh]
+program = "{{ .chezmoi.homeDir }}/.config/git/ssh-keygen"
