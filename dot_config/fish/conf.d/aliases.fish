@@ -1,4 +1,6 @@
 # general utility
+alias ssh-unsafe "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=accept-new"
+
 if type -q systemctl
     abbr -g -a userctl "systemctl --user"
 end
