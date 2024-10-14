@@ -4,3 +4,7 @@
 
 # Scratch files
 __scratch/
+
+# Direnv / Devbox
+.direnv/
+.devbox/
