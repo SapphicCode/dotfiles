@@ -69,6 +69,8 @@
 [alias]
     wip = commit --no-verify -m "wip" .
     back = checkout @{-1}
+    stage = add
+    unstage = git restore --staged
 
     wt = worktree
 
