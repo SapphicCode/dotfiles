@@ -67,7 +67,7 @@
     required = true
 
 [alias]
-    wip = commit --no-verify -m "wip" .
+    wip = ! git add --all && git commit --no-verify -m "wip"
     back = checkout @{-1}
     stage = add
     unstage = git restore --staged
