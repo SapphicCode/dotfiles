@@ -1,3 +1,7 @@
+{{ if stat (joinPath .chezmoi.homeDir "Library/Containers/com.maxgoedjen.Secretive.SecretAgent") -}}
+IdentityAgent {{ .chezmoi.homeDir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+{{- end }}
+
 Compression yes
 
 Host blahaj
@@ -12,3 +16,6 @@ Hostname 100.66.158.81
 
 Host cab
 Hostname 100.87.233.8
+
+Host pandora
+Hostname 100.83.180.104
