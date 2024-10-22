@@ -37,19 +37,19 @@ end
 
 # fix $SHELL
 if type -q fish
-    set -x SHELL (type -p fish)
+    set -g -x SHELL (type -p fish)
 end
 
 # Go
-set -x GOPATH $HOME/dev/go
-set -x CGO_ENABLED 0
+set -g -x GOPATH $HOME/dev/go
+set -g -x CGO_ENABLED 0
 
 # Editors
 if type -q nvim
     if not set -U -q EDITOR &>/dev/null
         set -U -x EDITOR nvim
     end
-    set -x MANPAGER "nvim +Man!"
+    set -g -x MANPAGER "nvim +Man!"
 end
 # prefer universal over global variable in this case
 if set -g -q EDITOR &>/dev/null
@@ -57,17 +57,17 @@ if set -g -q EDITOR &>/dev/null
 end
 
 if [ "$TERM_PROGRAM" = vscode ]
-    set -x EDITOR "code -w"
+    set -g -x EDITOR "code -w"
 end
 
 # gcloud
 if type -q gcloud; and type -q python3.9
-    set -x CLOUDSDK_PYTHON (type --path python3.9)
+    set -g -x CLOUDSDK_PYTHON (type --path python3.9)
 end
 
 # pnpm
 if type -q pnpm
-    set -x PNPM_HOME $HOME/.local/share/pnpm
+    set -g -x PNPM_HOME $HOME/.local/share/pnpm
     mkdir -p $PNPM_HOME
 end
 
@@ -93,7 +93,7 @@ end
 
 # rclone
 if type -q rclone
-    set -x RCLONE_FAST_LIST 1
+    set -g -x RCLONE_FAST_LIST 1
 end
 
 # podman socket for docker
