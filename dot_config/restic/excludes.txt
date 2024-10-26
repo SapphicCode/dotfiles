@@ -21,6 +21,10 @@ $Home/AppData/Roaming/**/CacheStorage
 $HOME/.local/share/KotatogramDesktop
 $HOME/.mozilla
 
+# "AI"
+$HOME/.ollama
+$HOME/.config/Jan
+
 # Programming caches
 $HOME/.ansible
 $HOME/.npm
@@ -56,11 +60,22 @@ $HOME/.Trash
 # Programs
 $HOME/Applications
 $HOME/Games
-$HOME/.local/share/Steam
-$HOME/Library/Application Support/Steam
 $HOME/.local/share/containers
 $HOME/.local/bin
 $HOME/.config/kustomize/plugin
+
+# Steam
+Steam/*
+!Steam/steamapps
+Steam/steamapps/*
+!Steam/steamapps/compatdata
+Steam/steamapps/compatdata/*/pfx/drive_c/*
+!Steam/steamapps/compatdata/*/pfs/drive_c/users
+Steam/steamapps/compatdata/*/pfs/drive_c/users/**/Temp
+Steam/steamapps/compatdata/*/pfs/drive_c/users/**/Microsoft
+Steam/steamapps/compatdata/*/pfs/drive_c/users/**/Windows
+!Steam/userdata
+Steam/userdata/*/gamerecordings/video/bg_*
 
 # Backups (ensure these are copied elsewhere!)
 $HOME/Library/Application Support/MobileSync/Backup
