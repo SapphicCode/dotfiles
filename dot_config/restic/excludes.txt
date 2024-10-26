@@ -70,10 +70,10 @@ Steam/*
 Steam/steamapps/*
 !Steam/steamapps/compatdata
 Steam/steamapps/compatdata/*/pfx/drive_c/*
-!Steam/steamapps/compatdata/*/pfs/drive_c/users
-Steam/steamapps/compatdata/*/pfs/drive_c/users/**/Temp
-Steam/steamapps/compatdata/*/pfs/drive_c/users/**/Microsoft
-Steam/steamapps/compatdata/*/pfs/drive_c/users/**/Windows
+!Steam/steamapps/compatdata/*/pfx/drive_c/users
+Steam/steamapps/compatdata/*/pfx/drive_c/users/**/Temp
+Steam/steamapps/compatdata/*/pfx/drive_c/users/**/Microsoft
+Steam/steamapps/compatdata/*/pfx/drive_c/users/**/Windows
 !Steam/userdata
 Steam/userdata/*/gamerecordings/video/bg_*
 
