@@ -37,8 +37,17 @@ if [ "${SSH_CONNECTION}${TERM_PROGRAM}" ] && tty -s; then
         fi
     done
 
+    # add nix-profile to PATH
+    for nix in /nix/var/nix/profiles/default/bin $HOME/.nix-profile/bin /run/wrappers/bin; do
+        if [ -d "$nix" ]; then
+            PATH="${nix}:${PATH}"
+        fi
+    done
+
+    PS1="$(hostname -s)@$(whoami)> "
+
     # hook starship
-    if tty -s && type starship &> /dev/null; then
-    eval "$(starship init bash)"
+    if tty -s && type starship &> /dev/null && [ "$(uname)" != "Darwin" ]; then
+        eval "$(starship init bash)"
     fi
 fi
