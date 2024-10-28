@@ -13,3 +13,7 @@ disabled = false
 format = "[$time]($style) "
 style = "purple"
 time_format = "%R"
+
+[shell]
+disabled = false
+fish_indicator = ""

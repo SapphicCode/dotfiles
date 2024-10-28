@@ -47,7 +47,7 @@ if [ "${SSH_CONNECTION}${TERM_PROGRAM}" ] && tty -s; then
     PS1="$(hostname -s)@$(whoami)> "
 
     # hook starship
-    if tty -s && type starship &> /dev/null && [ "$(uname)" != "Darwin" ]; then
+    if tty -s && type starship &> /dev/null; then
         eval "$(starship init bash)"
     fi
 fi
