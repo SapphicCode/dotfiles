@@ -11,10 +11,15 @@ $env.PATH = (
     ]
     # user PATHs
     | prepend [
+        ([$env.HOME, "dev", "1p", "sandbox", "script"] | path join)
         ([$env.HOME, "dev", "scripts"] | path join)
         ([$env.HOME, ".local", "bin"] | path join)
         ([$env.GOPATH, "bin"] | path join)
         ([$env.HOME, ".nix-profile", "bin"] | path join)
+    ]
+    # special setuid / setgid binaries
+    | prepend [
+        "/run/wrappers/bin"
     ]
     | uniq
 )
@@ -35,3 +40,7 @@ $env.EDITOR = (do {
 
     $candidates | first
 })
+
+# set up prompt
+const _starship = "~/.cache/starship.nu"
+source $_starship

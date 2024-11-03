@@ -7,14 +7,14 @@ end
 
 config.font = wezterm.font_with_fallback({
 	{ family = "Iosevka Comfy", weight = "Regular" },
-	{ family = "Fira Code", weight = "Medium" },
+	{ family = "Fira Code",     weight = "Medium" },
 	"Apple Color Emoji",
 })
 -- config.cell_width = 0.9
 config.font_size = 12.0
 config.freetype_load_target = "Light"
 
-config.default_prog = { os.getenv("HOME") .. "/.nix-profile/bin/fish" }
+config.default_prog = { os.getenv("HOME") .. "/.nix-profile/bin/nu", "--login" }
 
 -- config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
