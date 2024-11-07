@@ -47,3 +47,8 @@ if type -q git
     abbr -g -a gp "git push"
     abbr -g -a gpf "git push --force-with-lease"
 end
+
+# eza
+if type -q eza
+    alias ls eza
+end
