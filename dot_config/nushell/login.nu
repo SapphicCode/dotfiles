@@ -40,7 +40,3 @@ $env.EDITOR = (do {
 
     $candidates | first
 })
-
-# set up prompt
-const _starship = "~/.cache/starship.nu"
-source $_starship
