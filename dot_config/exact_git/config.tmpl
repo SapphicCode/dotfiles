@@ -42,10 +42,11 @@
     sort = -committerdate
 
 [credential]
+    helper = cache --timeout 43200  # 60 * 60 * 12 = 12 hours
 {{- if eq .chezmoi.os "darwin" }}
     helper = osxkeychain
 {{- end }}
-{{- if eq .chezmoi.os "linux" }}
+{{- if and (eq .chezmoi.os "linux") (or (lookPath "kwalletd") (lookPath "gnome-keyring")) }}
     helper = libsecret
 {{- end }}
     helper = netrc
@@ -67,7 +68,8 @@
     required = true
 
 [alias]
-    wip = ! git add --all && git commit --no-verify -m "wip"
+    wip = ! git add --all && git commit --no-verify -m \"wip [skip ci]\"
+    wipp = ! git wip && git push origin HEAD:$(git branch --show-current)-wip && git reset HEAD~1
     back = checkout @{-1}
     stage = add
     unstage = git restore --staged
