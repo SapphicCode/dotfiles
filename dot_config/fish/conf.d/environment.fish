@@ -1,5 +1,7 @@
 # don't modify environment in non-login shells
-if not status is-login
+if not begin
+        status is-login; or [ "$TERM_PROGRAM" = vscode ]
+    end
     return
 end
 
