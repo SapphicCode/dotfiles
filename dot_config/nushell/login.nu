@@ -40,3 +40,5 @@ $env.EDITOR = (do {
 
     $candidates | first
 })
+
+$env.SHELL = which nu | first | get path
