@@ -46,7 +46,7 @@
 {{- if eq .chezmoi.os "darwin" }}
     helper = osxkeychain
 {{- end }}
-{{- if and (eq .chezmoi.os "linux") (or (lookPath "kwalletd") (lookPath "gnome-keyring")) }}
+{{- if and (eq .chezmoi.os "linux") (or (lookPath "kwallet-query") (lookPath "gnome-keyring")) }}
     helper = libsecret
 {{- end }}
     helper = netrc
