@@ -27,6 +27,7 @@ $env.PATH = (
 # Set up EDITOR
 $env.EDITOR = (do {
     mut candidates = ([
+        micro
         nvim
         hx
         vim
