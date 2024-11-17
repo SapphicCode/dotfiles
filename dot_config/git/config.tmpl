@@ -78,7 +78,7 @@
     wipp = ! git wip && git push origin HEAD:$(git branch --show-current)-wip && git reset HEAD~1
     back = checkout @{-1}
     stage = add
-    unstage = git restore --staged
+    unstage = restore --staged
 
     wt = worktree
 
