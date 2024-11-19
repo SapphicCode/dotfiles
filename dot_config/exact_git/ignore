@@ -1,10 +1,13 @@
+# Scratch files
+__scratch/
+
 # macOS
 .DS_Store
 ._*
 
-# Scratch files
-__scratch/
-
 # Direnv / Devbox
 .direnv/
 .devbox/
+
+# Editors
+.vscode/
