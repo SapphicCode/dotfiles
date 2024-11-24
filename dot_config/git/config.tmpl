@@ -35,6 +35,12 @@
 [merge]
     conflictStyle = diff3
 
+{{ if (lookPath "mergiraf") -}}
+[merge "mergiraf"]
+    name = mergiraf
+    driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P
+{{- end }}
+
 [rebase]
     autoStash = true
 
@@ -77,8 +83,8 @@
     wt = worktree
 
 [credential "https://github.com"]
-    helper = 
+    helper =
     helper = !~/.nix-profile/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-    helper = 
+    helper =
     helper = !~/.nix-profile/bin/gh auth git-credential
