@@ -1,5 +1,7 @@
 {{ if stat (joinPath .chezmoi.homeDir "Library/Containers/com.maxgoedjen.Secretive.SecretAgent") -}}
 IdentityAgent {{ .chezmoi.homeDir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+{{ else if (joinPath .chezmoi.homeDir "Library/Caches/yubikey-agent.sock") -}}
+IdentityAgent {{ .chezmoi.homeDir }}/Library/Caches/yubikey-agent.sock
 {{- end }}
 
 Compression yes
