@@ -12,7 +12,7 @@ if test "$SSH_CONNECTION"; and status is-interactive; and type -q zellij
     set -l stop (date '+%s')
     set -l duration (math $stop - $start)
     # escape hatch if quickly quit
-    if test $status -eq 0; and test $duration -gt 10
+    if test $duration -gt 10
         exit
     end
 end
