@@ -5,6 +5,11 @@ if not begin
     return
 end
 
+# auto-attach zellij in SSH if session present
+if test "$SSH_CONNECTION"; and status is-interactive; and type -q zellij
+    zellij attach ssh 2> /dev/null; and exit
+end
+
 set -l platform (uname | string lower)
 
 # sudo
