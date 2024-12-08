@@ -7,9 +7,12 @@ end
 
 # auto-attach zellij in SSH if session present
 if test "$SSH_CONNECTION"; and status is-interactive; and type -q zellij
+    set -l start (date '+%s')
     zellij attach ssh 2> /dev/null
+    set -l stop (date '+%s')
+    set -l duration (math $stop - $start)
     # escape hatch if quickly quit
-    if test $status -eq 0; and test $CMD_DURATION -gt 10000
+    if test $status -eq 0; and test $duration -gt 10
         exit
     end
 end
