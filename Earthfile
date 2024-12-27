@@ -30,9 +30,9 @@ all-cloud-shell:
     BUILD --platform=linux/amd64 --platform=linux/arm64 +cloud-shell-python
 
 cloud-shell:
-    FROM DOCKERFILE -f .cloud-shell/Dockerfile .
+    FROM DOCKERFILE --target base .
     SAVE IMAGE --push quay.io/sapphiccode/cloud-shell:latest quay.io/sapphiccode/cloud-shell:g$git_rev
 
 cloud-shell-python:
-    FROM DOCKERFILE -f .cloud-shell/Dockerfile.python .
+    FROM DOCKERFILE --target python .
     SAVE IMAGE --push quay.io/sapphiccode/cloud-shell:latest-python quay.io/sapphiccode/cloud-shell:g$git_rev-python
