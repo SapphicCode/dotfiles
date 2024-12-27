@@ -6,9 +6,11 @@ if not begin
 end
 
 # auto-attach zellij in SSH if session present
-if test "$SSH_CONNECTION"; and status is-interactive; and type -q zellij
+if test "$SSH_CONNECTION"; and test -z "$ZELLIJ"; and status is-interactive; and type -q zellij
     set -l start (date '+%s')
-    zellij attach ssh 2> /dev/null
+    if zellij list-sessions --no-formatting | grep --invert-match EXITED | grep -q ssh
+        zellij attach ssh
+    end
     set -l stop (date '+%s')
     set -l duration (math $stop - $start)
     # escape hatch if quickly quit
