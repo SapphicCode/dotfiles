@@ -1,0 +1,9 @@
+font-family = "FiraCode Nerd Font"
+font-size = 14
+
+background = 101010
+
+# macOS
+auto-update = download
+background-blur-radius = 20
+background-opacity = 0.9
