@@ -11,3 +11,6 @@ __scratch/
 
 # Editors
 .vscode/
+
+# Local documentation
+*.bike
