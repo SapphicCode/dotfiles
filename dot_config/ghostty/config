@@ -1,6 +1,7 @@
 font-family = Berkeley Mono
 font-family = Iosevka Comfy
 font-size = 14
+window-step-resize = true
 
 background = 101010
 
