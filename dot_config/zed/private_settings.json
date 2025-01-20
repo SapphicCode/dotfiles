@@ -8,7 +8,7 @@
 // from the command palette
 {
   "features": {
-    "inline_completion_provider": "none"
+    "inline_completion_provider": "copilot"
   },
   "ui_font_size": 16,
   "ui_font_family": "Zed Plex Mono",
@@ -34,6 +34,9 @@
   },
   "languages": {
     "HTML": { "prettier": {} },
-    "Nix": { "tab_size": 2 }
+    "Nix": { "tab_size": 2 },
+    "JSON": { "tab_size": 2 },
+    "JSONC": { "tab_size": 2 },
+    "YAML": { "tab_size": 2 }
   }
 }
