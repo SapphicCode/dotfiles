@@ -5,6 +5,8 @@ window-step-resize = true
 
 background = 101010
 
+term = xterm-256color
+
 # macOS
 auto-update = download
 background-blur-radius = 20
