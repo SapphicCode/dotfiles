@@ -75,6 +75,9 @@ end
 if [ "$TERM_PROGRAM" = vscode ]
     set -g -x EDITOR "code -w"
 end
+if [ "$TERM_PROGRAM" = zed ]
+    set -g -x EDITOR "zed -w"
+end
 
 # gcloud
 if type -q gcloud; and type -q python3.9
