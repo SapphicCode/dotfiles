@@ -48,11 +48,11 @@
     helper = cache --timeout 43200  # 60 * 60 * 12 = 12 hours
 {{- if eq .chezmoi.os "darwin" }}
     helper = osxkeychain
-{{- end }}
-{{- if and (eq .chezmoi.os "linux") (or (lookPath "kwallet-query") (lookPath "gnome-keyring")) }}
+{{- else if and (eq .chezmoi.os "linux") (or (lookPath "kwallet-query") (lookPath "gnome-keyring")) }}
     helper = libsecret
-{{- end }}
+{{- else }}
     helper = netrc
+{{- end }}
 
 [filter "lfs"]
     clean = git-lfs clean -- %f
