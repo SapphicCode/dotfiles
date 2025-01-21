@@ -9,9 +9,10 @@ if status is-interactive; and [ "$TERM_PROGRAM" = "iTerm.app" ]
 end
 
 # CLI application launchers
-if type -q fd
-    for app in (fd --max-depth 2 -t directory '\.app$' /Applications ~/Applications)
-        set -l app_safe (string replace -r -a "[^\w.]" "" (basename $app))
-        alias $app_safe "open -a '$app'"
+function fish_command_not_found
+    if string match -q -r '\.app$' $argv[1]
+        open -a $argv[1] $argv[2..]
+    else
+        echo "fish: command not found: $argv[1]"
     end
 end
