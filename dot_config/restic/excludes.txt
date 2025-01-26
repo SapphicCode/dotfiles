@@ -28,6 +28,7 @@ $HOME/.config/Jan
 # Programming caches
 $HOME/.ansible
 $HOME/.npm
+$HOME/.local/share/pnpm
 $HOME/.vscode
 $HOME/.ivy2
 $HOME/.local/share/virtualenv
@@ -37,6 +38,9 @@ $HOME/.colima
 $HOME/.lima
 $HOME/.openjfx
 $HOME/.ollama
+$HOME/.orbstack
+$HOME/.cargo
+$HOME/.julia
 node_modules
 site-packages
 *.pyc
@@ -45,7 +49,6 @@ $HOME/dev/**/venv
 $HOME/dev/go
 
 # Downloads
-$HOME/Downloads
 $HOME/dev/tmp
 $HOME/.factorio/temp
 $HOME/Library/Developer
