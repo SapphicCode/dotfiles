@@ -53,6 +53,7 @@ $HOME/dev/tmp
 $HOME/.factorio/temp
 $HOME/Library/Developer
 $HOME/Library/Application Support/Google/DriveFS
+$HOME/Library/Application Support/FileProvider
 $HOME/Library/Mobile Documents
 $HOME/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Application Support/Aerial
 
