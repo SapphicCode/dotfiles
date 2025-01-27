@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>SUDO_ASKPASS</key>
+		<string>/bin/false</string>
+	</dict>
+	<key>Label</key>
+	<string>local.brew-upgrade</string>
+	<key>ProcessType</key>
+	<string>Background</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/zsh</string>
+		<string>-l</string>
+		<string>-c</string>
+		<string>brew upgrade</string>
+	</array>
+	<key>StandardErrorPath</key>
+	<string>/tmp/local.brew-upgrade.stderr</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/local.brew-upgrade.stdout</string>
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>17</integer>
+		<key>Minute</key>
+		<integer>18</integer>
+	</dict>
+</dict>
+</plist>

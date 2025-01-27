@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>RESTIC_PASSWORD_COMMAND</key>
+		<string>zsh -c "ioreg -ad2 -c IOPlatformExpertDevice | plutil -extract IORegistryEntryChildren.0.IOPlatformUUID raw -"</string>
+	</dict>
+	<key>Label</key>
+	<string>local.restic</string>
+	<key>LowPriorityBackgroundIO</key>
+	<true/>
+	<key>ProcessType</key>
+	<string>Background</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/zsh</string>
+		<string>-l</string>
+		<string>-c</string>
+		<string>restic backup -r rclone:@personal:scratch/backups/$(scutil --get LocalHostName) --exclude-caches --exclude $HOME/.config/restic/excludes.txt $HOME</string>
+	</array>
+	<key>StandardErrorPath</key>
+	<string>/tmp/local.restic.stderr</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/local.restic.stdout</string>
+	<key>StartCalendarInterval</key>
+	<array>
+		<dict>
+			<key>Minute</key>
+			<integer>13</integer>
+		</dict>
+	</array>
+</dict>
+</plist>
