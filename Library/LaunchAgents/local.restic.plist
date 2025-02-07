@@ -18,7 +18,7 @@
 		<string>/bin/zsh</string>
 		<string>-l</string>
 		<string>-c</string>
-		<string>restic backup -r rclone:@personal:scratch/backups/$(scutil --get LocalHostName) --exclude-caches --exclude $HOME/.config/restic/excludes.txt $HOME</string>
+		<string>restic backup -r rclone:@personal:scratch/backups/$(scutil --get LocalHostName) --exclude-caches --exclude-file $HOME/.config/restic/excludes.txt $HOME</string>
 	</array>
 	<key>StandardErrorPath</key>
 	<string>/tmp/local.restic.stderr</string>
