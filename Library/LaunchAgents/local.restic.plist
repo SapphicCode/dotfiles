@@ -15,6 +15,8 @@
 	<string>Background</string>
 	<key>ProgramArguments</key>
 	<array>
+		<string>/usr/local/bin/fdautil</string>
+		<string>exec</string>
 		<string>/bin/zsh</string>
 		<string>-l</string>
 		<string>-c</string>

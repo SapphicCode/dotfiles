@@ -13,10 +13,10 @@
 	<string>Background</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/bin/zsh</string>
-		<string>-l</string>
-		<string>-c</string>
-		<string>brew upgrade</string>
+		<string>/usr/local/bin/fdautil</string>
+		<string>exec</string>
+		<string>/opt/homebrew/bin/brew</string>
+		<string>upgrade</string>
 	</array>
 	<key>StandardErrorPath</key>
 	<string>/tmp/local.brew-upgrade.stderr</string>
