@@ -7,6 +7,7 @@ justfile
 
 {{ if ne .chezmoi.os "darwin" }}
 Library
+.cache
 .local/bin/python
 .local/bin/tailscale
 {{ end }}
