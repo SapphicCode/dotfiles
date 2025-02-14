@@ -1,8 +1,7 @@
 # Caches
 $HOME/.cache
 $HOME/Library/Caches
-$HOME/Library/Containers/**/Library/Caches
-$HOME/Library/Group Containers/**/Library/Caches
+$HOME/Library/**/Caches
 $HOME/Library/Trial
 $HOME/.kube/cache
 $HOME/.var/app/*/cache
@@ -29,6 +28,7 @@ $HOME/.config/Jan
 $HOME/.ansible
 $HOME/.npm
 $HOME/.local/share/pnpm
+$HOME/.bun
 $HOME/.vscode
 $HOME/.ivy2
 $HOME/.local/share/virtualenv
@@ -47,6 +47,7 @@ site-packages
 .terraform/providers
 $HOME/dev/**/venv
 $HOME/dev/go
+$HOME/Library/Group Containers/HUAQ24HBR6.dev.orbstack
 
 # Downloads
 $HOME/dev/tmp
@@ -56,6 +57,10 @@ $HOME/Library/Application Support/Google/DriveFS
 $HOME/Library/Application Support/FileProvider
 $HOME/Library/Mobile Documents
 $HOME/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Application Support/Aerial
+
+# Mount points
+$HOME/mnt
+$HOME/OrbStack
 
 # Trash
 $HOME/.local/share/Trash
@@ -80,9 +85,6 @@ Steam/steamapps/compatdata/*/pfx/drive_c/users/**/Microsoft
 Steam/steamapps/compatdata/*/pfx/drive_c/users/**/Windows
 !Steam/userdata
 Steam/userdata/*/gamerecordings/video/bg_*
-
-# Backups (ensure these are copied elsewhere!)
-$HOME/Library/Application Support/MobileSync/Backup
 
 # Prism launcher assets
 PrismLauncher/assets
