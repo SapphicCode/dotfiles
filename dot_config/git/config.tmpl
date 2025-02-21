@@ -51,7 +51,7 @@
 {{- else if and (eq .chezmoi.os "linux") (or (lookPath "kwallet-query") (lookPath "gnome-keyring")) }}
     helper = libsecret
 {{- else }}
-    helper = netrc
+    helper = store
 {{- end }}
 
 [filter "lfs"]
