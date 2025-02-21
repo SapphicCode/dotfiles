@@ -12,5 +12,9 @@ Library
 .local/bin/tailscale
 {{ end }}
 
+{{ if eq .chezmoi.os "windows" }}
+**/*.sh
+{{ end}}
+
 flake.nix
 flake.lock
