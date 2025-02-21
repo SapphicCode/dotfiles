@@ -15,14 +15,6 @@
   checksum:
     sha256: 6aa615a5f0511845bab1238a85fdc75e6da90d0d5c35f44937528f131d987f79
 
-{{ if eq .chezmoi.os "darwin" -}}
-.config/fish/iterm_integration.fish:
-  type: file
-  url: https://iterm2.com/shell_integration/fish
-  checksum:
-    sha256: dbd5ef17ff0a19deb734e02a58fa313833d000c03c80dafe3081c512a70aa2fe
-{{- end }}
-
 # bass (bash to fish interpreter)
 .config/fish/functions:
   type: archive
