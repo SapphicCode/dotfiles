@@ -1,0 +1,9 @@
+theme = "tokyonight_moon"
+
+[keys.normal]
+C-s = ":w"
+C-q = ":q"
+C-S-q = ":qa!"
+
+[keys.insert]
+C-s = ["normal_mode", ":w"]
