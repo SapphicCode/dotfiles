@@ -23,22 +23,22 @@ fi
 
 unset rc
 
+# add brew to PATH
+for brew in /opt/homebrew /home/linuxbrew/.linuxbrew; do
+    if [ -d $brew ]; then
+        eval "$(${brew}/bin/brew shellenv)"
+    fi
+done
+
+# add nix-profile to PATH
+for nix in /nix/var/nix/profiles/default/bin $HOME/.nix-profile/bin /run/wrappers/bin; do
+    if [ -d "$nix" ]; then
+        PATH="${nix}:${PATH}"
+    fi
+done
+
 # make bash play dumb unless intentionally launched by user
 if [[ "${SSH_CONNECTION}" || "${TERM_PROGRAM}" || "${WSL_DISTRO_NAME}" ]] && tty -s; then
-    # add brew to PATH
-    for brew in /opt/homebrew /home/linuxbrew/.linuxbrew; do
-        if [ -d $brew ]; then
-            eval "$(${brew}/bin/brew shellenv)"
-        fi
-    done
-
-    # add nix-profile to PATH
-    for nix in /nix/var/nix/profiles/default/bin $HOME/.nix-profile/bin /run/wrappers/bin; do
-        if [ -d "$nix" ]; then
-            PATH="${nix}:${PATH}"
-        fi
-    done
-
     # reset home if WSL launched from windows home
     if type -P rg > /dev/null && [[ "${WSL_DISTRO_NAME}" ]] && echo "$(pwd)" | rg -q "/Users/[^/]+$"; then
         cd "$HOME"
