@@ -1,6 +1,9 @@
 default:
     just -l
 
+apply:
+    chezmoi update -a
+
 export RCLONE_EXCLUDE_FROM := env('HOME') / ".local/share/rclone/macOS.rclone-filter"
 export RCLONE_EXCLUDE := "cache/,DistantHorizons.sqlite"
 
