@@ -1,14 +1,5 @@
 #!/usr/bin/env zsh
 
-# MacPorts
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-
-# homebrew
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-
-# Nix
-export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
-
 # launch fish if we're in an SSH connection
 if [[ -o login && -o interactive && ("${SSH_CONNECTION}" || "${TERM_PROGRAM}") ]] && which fish &> /dev/null; then
     exec fish -l
