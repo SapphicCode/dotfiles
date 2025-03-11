@@ -1,6 +1,9 @@
-default:
+_default:
     just -l
 
+import '~/.local.just'
+
+# Update dotfiles
 apply:
     chezmoi update -a
 
