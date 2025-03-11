@@ -1,7 +1,7 @@
 _default:
     just -l
 
-import '~/.local.just'
+import? '~/.local.just'
 
 # Update dotfiles
 apply:
