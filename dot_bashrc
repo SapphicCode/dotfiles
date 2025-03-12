@@ -39,13 +39,13 @@ done
 
 # make bash play dumb unless intentionally launched by user
 if [[ "${SSH_CONNECTION}" || "${TERM_PROGRAM}" || "${WSL_DISTRO_NAME}" ]] && tty -s; then
-    # reset home if WSL launched from windows home
-    if type -P rg > /dev/null && [[ "${WSL_DISTRO_NAME}" ]] && echo "$(pwd)" | rg -q "/Users/[^/]+$"; then
+    # reset home if WSL or OrbStack launched from windows home
+    if type -P rg > /dev/null && ([[ "${WSL_DISTRO_NAME}" ]] || echo "$BROWSER" | rg -q orbstack) && echo "$(pwd)" | rg -q "/Users/[^/]+$"; then
         cd "$HOME"
     fi
 
     # if we've not launched from fish and fish exists, exec fish
-    if echo "${SHELL}" | grep -q bash && tty -s && type -P fish > /dev/null; then
+    if echo "${SHELL}" | grep -q bash && type -P fish > /dev/null; then
         exec fish -l
     fi
 
