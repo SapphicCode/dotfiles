@@ -3,6 +3,6 @@ alias gcan = git commit --amend --no-edit
 alias gp   = git push
 alias gpf  = git push --force-with-lease
 
-def "nix path" [...targets: string] list<string> {
+def "nix path" [...targets: string]: nothing -> list<string> {
     return (nix build --no-link --print-out-paths ...$targets | str trim | split row (char newline))
 }
