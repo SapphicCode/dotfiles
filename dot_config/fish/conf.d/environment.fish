@@ -6,7 +6,7 @@ if not begin
 end
 
 # auto-attach zellij in SSH if session present
-if test "$SSH_CONNECTION"; and status is-interactive; and test -z "$ZELLIJ"; and test "$TERM_PROGRAM" != "vscode"; and type -q zellij
+if test "$SSH_CONNECTION"; and status is-interactive; and test -z "$ZELLIJ"; and test "$TERM_PROGRAM" != vscode; and type -q zellij
     set -l start (date '+%s')
     if zellij list-sessions --no-formatting | grep --invert-match EXITED | grep -q ssh
         zellij attach ssh
@@ -106,8 +106,8 @@ end
 if [ -d $HOME/dev/scripts ]
     fish_add_path -g -m $HOME/dev/scripts
 end
-if [ -d $HOME/dev/1p/sandbox/scripts ]
-    fish_add_path -g -m $HOME/dev/1p/sandbox/scripts
+if [ -d $HOME/dev/1p/x/scripts ]
+    fish_add_path -g -m $HOME/dev/1p/x/scripts
 end
 
 # rclone
