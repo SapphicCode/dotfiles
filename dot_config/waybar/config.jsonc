@@ -1,0 +1,98 @@
+// -*- mode: jsonc -*-
+{
+    "spacing": 4,
+    "modules-left": [
+        "niri/workspaces",
+        "niri/window",
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "idle_inhibitor",
+        "pulseaudio",
+        "network",
+        "power-profiles-daemon",
+        "cpu",
+        "memory",
+        "temperature",
+        "battery",
+        "clock",
+        "tray"
+    ],
+    "niri/workspaces": {
+        "format": "WS/{value}"
+    },
+    "niri/window": {
+        "format": "{title}"
+    },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "F/CTL ALTN LAW",
+            "deactivated": "NORM"
+        }
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%H:%M} CLK",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d} DAY"
+    },
+    "cpu": {
+        "format": "{usage}% CPU",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% MEM",
+        "tooltip-format": "{used} GiB used of {total} GiB"
+    },
+    "temperature": {
+        "critical-threshold": 70,
+        "format": "{temperatureC}°C SEN",
+        "tooltip": false
+    },
+    "backlight": {
+        "format": "{percent}% BKL"
+    },
+    "battery": {
+        "format": "{capacity}% BAT",
+        "format-charging": "{capacity}% BAT/C",
+        "format-full": "",
+        "format-alt": "{time}"
+    },
+    "power-profiles-daemon": {
+        "format": "ENG/{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "BAL",
+            "performance": "HPWR",
+            "balanced": "BAL",
+            "power-saver": "LPWR"
+        }
+    },
+    "network": {
+        "format-wifi": "NET/W",
+        "format-ethernet": "NET/E",
+        "tooltip-format": "{ipaddr}/{cidr}\n{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "{essid} {signalStrength}%\n{ipaddr}/{cidr}\n{ifname} via {gwaddr}",
+        "format-disconnected": "NET/INOP"
+    },
+    "pulseaudio": {
+        "format": "{volume}% SPKR",
+        "format-bluetooth": "{volume}% BT",
+        "format-muted": "DEAF",
+        "reverse-scrolling": true,
+        "on-click": "pavucontrol"
+    }
+}

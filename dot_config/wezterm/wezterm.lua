@@ -14,7 +14,7 @@ config.font = wezterm.font_with_fallback({
 config.font_size = 12.0
 config.freetype_load_target = "Light"
 
-config.default_prog = { os.getenv("HOME") .. "/.nix-profile/bin/nu", "--login" }
+--config.default_prog = { os.getenv("HOME") .. "/.nix-profile/bin/nu", "--login" }
 
 -- config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
