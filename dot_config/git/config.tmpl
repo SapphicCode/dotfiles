@@ -54,12 +54,6 @@
     helper = store
 {{- end }}
 
-[filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
-
 [alias]
     wip = ! git add --all && git commit --no-verify -m \"wip [skip ci]\"
     wipp = ! git wip && git push origin HEAD:$(git branch --show-current)-wip && git reset HEAD~1
