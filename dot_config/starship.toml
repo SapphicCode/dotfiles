@@ -13,8 +13,7 @@ $fossil_metrics\
 $kubernetes\
 $direnv\
 $env_var\
-$mise\
-$crystal\
+${custom.timew}\
 $custom\
 $sudo\
 $cmd_duration\
@@ -60,4 +59,10 @@ disabled = true
 [kubernetes]
 disabled = false
 symbol = "⎈ "
-format = '[$symbol$context/$namespace]($style) '
+format = '[$symbol$context(/$namespace)]($style) '
+
+[custom.timew]
+#shell = ["bash", "-c"]
+command = "timew get dom.active.duration"
+when = "[ \"$(timew get dom.active)\" = '1' ]"
+#when = true
