@@ -1,5 +1,5 @@
-daemon:
-  shell_command:
-    - fish
-    - -c
-    - "{{ pueue_command_string }}"
+# daemon:
+#   shell_command:
+#     - fish
+#     - -c
+#     - "{{ pueue_command_string }}"
