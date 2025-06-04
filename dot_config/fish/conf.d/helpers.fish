@@ -12,6 +12,3 @@ if type -q atuin; and not begin
 
     atuin init fish | source
 end
-if type -q devbox
-    devbox global shellenv -r | source
-end
