@@ -60,9 +60,3 @@ disabled = true
 disabled = false
 symbol = "⎈ "
 format = '[$symbol$context(/$namespace)]($style) '
-
-[custom.timew]
-#shell = ["bash", "-c"]
-command = "timew get dom.active.duration"
-when = "[ \"$(timew get dom.active)\" = '1' ]"
-#when = true
