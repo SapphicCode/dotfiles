@@ -37,10 +37,12 @@ else if string match -q -e $platform linux; and path is -d /home/linuxbrew/.linu
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 end
 ## nix
-### global default profile
-# don't add path if we're on, say, NixOS and path is already properly configured
-if not type -q nix; and path is -d /nix/var/nix/profiles/default/bin
+### global paths (prefer current-system over default profile)
+if path is -d /nix/var/nix/profiles/default/bin
     fish_add_path -g -m /nix/var/nix/profiles/default/bin
+end
+if path is -d /run/current-system/sw/bin
+    fish_add_path -g -m /run/current-system/sw/bin
 end
 ### local profile
 if path is -d $HOME/.nix-profile/bin
