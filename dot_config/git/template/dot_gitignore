@@ -5,12 +5,16 @@ __scratch/
 .DS_Store
 ._*
 
+# Windows
+desktop.ini
+
 # Direnv / Devbox
 .direnv/
 .devbox/
 
-# Editors
-.vscode/
+# Nix build outputs
+result
 
-# Local documentation
-*.bike
+# Editors
+.idea/
+.vscode/
