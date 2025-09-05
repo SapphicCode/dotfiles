@@ -1,27 +1,37 @@
 #!/usr/bin/env python3
 
-from sys import argv
+import sys
+import textwrap
 
-# read commit template
-commit_msg = []
-with open(argv[1], "r") as f:
-    commit_msg = f.read().splitlines()
+if __name__ == "__main__":
+    # read commit template
+    commit_msg = []
+    with open(sys.argv[1], "r") as f:
+        commit_msg = f.read().splitlines()
 
-# conventional commits
-if commit_msg[0].startswith("Merge") or commit_msg[0].startswith("Revert"):
-    action, rest = commit_msg[0].split(" ", 1)
-    action = action.lower()
-    if action == "merge":
-        commit_msg[0] = f"repo: {action} {rest}".replace("remote-tracking ", "")
-    if action == "revert":
-        commit_msg[0] = f"{action}: {rest}"
+    # conventional commits
+    if commit_msg[0].startswith("Merge") or commit_msg[0].startswith("Revert"):
+        action, rest = commit_msg[0].split(" ", 1)
+        action = action.lower()
+        if action == "merge":
+            commit_msg[0] = f"repo: {action} {rest}".replace("remote-tracking ", "")
+        if action == "revert":
+            commit_msg[0] = f"{action}: {rest}"
 
-if commit_msg[0] == "Squashed commit of the following:":
-    for idx, line in enumerate(commit_msg):
-        commit_msg[idx] = (
-            line.replace("[ci skip]", "").replace("[skip ci]", "").rstrip()
-        )
+    # remove ci skip from squashed commits
+    if commit_msg[0] == "Squashed commit of the following:":
+        for idx, line in enumerate(commit_msg):
+            commit_msg[idx] = (
+                line.replace("[ci skip]", "").replace("[skip ci]", "").rstrip()
+            )
 
-# write back
-with open(argv[1], "w") as f:
-    f.write("\n".join(commit_msg))
+    # wrap all lines following the first
+    if len(commit_msg) >= 3:
+        wrapped_lines = []
+        for line in commit_msg[2:]:
+            wrapped_lines.extend(textwrap.wrap(line, width=72) or [""])
+        commit_msg = commit_msg[:2] + wrapped_lines
+
+    # write back
+    with open(sys.argv[1], "w") as f:
+        f.write("\n".join(commit_msg))
