@@ -30,6 +30,9 @@ abbr -g -a rma rm
 if not type -q kustomize; and type -q kubectl
     abbr -g -a kustomize "kubectl kustomize"
 end
+if type -q yq; and type -q kubectl
+    alias decode-k8s-secret "yq '.data | map_values(@base64d)'"
+end
 
 # git
 if type -q git
