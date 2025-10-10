@@ -1,6 +1,19 @@
-# unset macOS SSH_AUTH_SOCK
-if string match -q "/private/tmp/com.apple.launchd*/Listeners" "$SSH_AUTH_SOCK"
-    set -e -g SSH_AUTH_SOCK
+# Attempt to find macOS' native SSH agent (for non-GUI contexts)
+if not set -q SSH_AUTH_SOCK
+    for path in /private/tmp/com.apple.launchd.*
+        if [ -S $path/Listeners ]
+            set -f -x SSH_AUTH_SOCK $path/Listeners
+
+            # see if it works
+            if not ssh-add -l &>/dev/null
+                continue
+            end
+
+            # found it
+            set -g -x SSH_AUTH_SOCK $SSH_AUTH_SOCK
+            break
+        end
+    end
 end
 
 # iTerm shell integration
