@@ -35,7 +35,7 @@ $env.EDITOR = (do {
         nano
     ] | where { (which $in | length) != 0 })
 
-    if (($env | get -i TERM_PROGRAM) == "vscode") {
+    if (($env | get --optional TERM_PROGRAM) == "vscode") {
         $candidates = ($candidates | prepend "code -w")
     }
 
