@@ -18,3 +18,7 @@ result
 # Editors
 .idea/
 .vscode/
+
+# Syncthing
+.stfolder
+.stignore
