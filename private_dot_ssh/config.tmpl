@@ -1,11 +1,3 @@
-{{ if stat (joinPath .chezmoi.homeDir "Library/Containers/com.maxgoedjen.Secretive.SecretAgent") -}}
-IdentityAgent {{ .chezmoi.homeDir }}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
-{{ else if stat (joinPath .chezmoi.homeDir "Library/Caches/yubikey-agent.sock") -}}
-IdentityAgent {{ .chezmoi.homeDir }}/Library/Caches/yubikey-agent.sock
-{{ else if stat (joinPath .chezmoi.homeDir ".cache/yubikey-agent.sock") -}}
-IdentityAgent {{ .chezmoi.homeDir }}/.cache/yubikey-agent.sock
-{{- end }}
-
 Compression yes
 
 Host blahaj
