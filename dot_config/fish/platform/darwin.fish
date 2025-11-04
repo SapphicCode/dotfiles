@@ -16,6 +16,11 @@ if not set -q SSH_AUTH_SOCK
     end
 end
 
+# But prefer a universal SSH agent if available
+if set -U -q SSH_AUTH_SOCK; and set -g -q SSH_AUTH_SOCK
+    set -g -e SSH_AUTH_SOCK
+end
+
 # iTerm shell integration
 if status is-interactive; and [ "$TERM_PROGRAM" = "iTerm.app" ]; and [ -f "$HOME/.config/fish/iterm_integration.fish" ]
     source "$HOME/.config/fish/iterm_integration.fish"
