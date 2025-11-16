@@ -43,3 +43,13 @@ $env.EDITOR = (do {
 })
 
 $env.SHELL = which nu | first | get path
+
+# load universal variables from fish
+if (which fish | length) > 0 {
+    fish -c 'set --universal -x' |
+        from ssv --noheaders -m 1 |
+        where {|row| ($row | get -o column1) != null } |
+        each {|row| {($row | get column0): ($row | get -o column1)} } |
+        into record |
+        load-env
+}
