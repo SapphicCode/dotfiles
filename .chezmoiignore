@@ -12,7 +12,9 @@ Library
 
 {{ if eq .chezmoi.os "windows" }}
 **/*.sh
-dev/1p/dotfiles
+{{ end }}
+{{ if or (eq .chezmoi.os "windows") (contains "orbstack" .chezmoi.kernel.osrelease) }}
+dev/**
 {{ end}}
 
 flake.nix
