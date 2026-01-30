@@ -57,8 +57,6 @@
 {{- end }}
 
 [alias]
-    wip = ! git add --all && git commit --no-verify -m \"wip [skip ci]\"
-    wipp = ! git wip && git push origin HEAD:$(git branch --show-current)-wip && git reset HEAD~1
     back = checkout @{-1}
 
     stage = add
@@ -66,6 +64,8 @@
 
     undo = reset --soft HEAD~1
     redo = reset --mixed HEAD@{1}
+
+    sync = ! git pull && git push
 
     wt = worktree
 
