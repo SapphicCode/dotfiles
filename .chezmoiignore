@@ -13,7 +13,7 @@ Library
 {{ if eq .chezmoi.os "windows" }}
 **/*.sh
 {{ end }}
-{{ if or (eq .chezmoi.os "windows") (contains "orbstack" .chezmoi.kernel.osrelease) }}
+{{ if or (eq .chezmoi.os "windows") (and (eq .chezmoi.os "linux") (contains "orbstack" .chezmoi.kernel.osrelease)) }}
 dev/**
 {{ end}}
 
