@@ -25,10 +25,13 @@ if __name__ == "__main__":
                 line.replace("[ci skip]", "").replace("[skip ci]", "").rstrip()
             )
 
-    # wrap all lines following the first
+    # wrap all non-comment lines following the first
     if len(commit_msg) >= 3:
         wrapped_lines = []
         for line in commit_msg[2:]:
+            if line.startswith("#"):
+                wrapped_lines.append(line)
+                continue
             wrapped_lines.extend(textwrap.wrap(line, width=72) or [""])
         commit_msg = commit_msg[:2] + wrapped_lines
 
