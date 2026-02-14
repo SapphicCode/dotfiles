@@ -9,5 +9,8 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 # Nix
 export PATH="/run/wrappers/bin:$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default/bin:$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
 
+# local
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+
 # remove duplicates
 typeset -U PATH
