@@ -1,5 +1,11 @@
 Compression yes
 
+{{ if eq .chezmoi.os "darwin" }}
+Host orb
+Hostname {{lower .chezmoi.hostname}}.orb.local
+ForwardAgent yes
+{{- end }}
+
 Host blahaj
 Hostname blahaj.sapphiccode.net
 
