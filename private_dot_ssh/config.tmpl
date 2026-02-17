@@ -1,5 +1,9 @@
 Compression yes
 
+{{ if eq .chezmoi.hostname "Clementine" }}
+IdentityAgent /Users/sapphiccode/Library/Caches/yubikey-agent.sock
+{{- end }}
+
 {{ if eq .chezmoi.os "darwin" }}
 Host orb
 Hostname {{lower .chezmoi.hostname}}.orb.local
