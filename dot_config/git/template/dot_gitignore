@@ -16,8 +16,8 @@ desktop.ini
 result
 
 # Editors
-.idea/
-.vscode/
+.idea/*
+.vscode/*
 
 # Syncthing
 .stfolder
