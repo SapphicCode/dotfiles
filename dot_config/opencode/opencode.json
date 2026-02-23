@@ -1,0 +1,41 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "read": {
+      "*": "allow",
+      ".envrc.local": "deny",
+      "secrets.yaml": "deny",
+      "kubeconfig": "deny",
+      "talosconfig": "deny",
+      "controlplane.yaml": "deny",
+      "worker.yaml": "deny"
+    },
+    "bash": {
+      "*": "ask",
+      "grep *": "allow",
+      "ls *": "allow",
+      "find *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "git log *": "allow",
+      "git status *": "allow"
+    },
+  },
+  "provider": {
+    "lmstudio": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LM Studio (local)",
+      "options": {
+        "baseURL": "http://clementine.atlas-ide.ts.net:1234/v1"
+      },
+      "models": {
+        "devstral-small-2-24b-instruct-2512": {
+          "name": "Devstral Small 2 24b 2512"
+        },
+        "qwen3/qwen3-coder-next": {
+          "name": "Qwen3 Coder Next"
+        }
+      }
+    }
+  }
+}
