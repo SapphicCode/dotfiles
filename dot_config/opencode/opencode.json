@@ -15,6 +15,7 @@
       "grep *": "allow",
       "ls *": "allow",
       "find *": "allow",
+      "wc *": "allow",
       "head *": "allow",
       "tail *": "allow",
       "git log *": "allow",
