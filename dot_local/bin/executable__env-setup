@@ -42,6 +42,25 @@ def main [flavor: string] {
     # rclone
     $out.RCLONE_FAST_LIST = "1"
 
+    # editor and manpager
+    # in order of preference
+    if not (which hx | is-empty) {
+        $out.EDITOR = "hx"
+    } else if not (which micro | is-empty) {
+        $out.EDITOR = "micro"
+    } else if not (which nvim | is-empty) {
+        $out.EDITOR = "nvim"
+        $out.MANPAGER = "nvim +Man!"
+    }
+
+    # override EDITOR based on TERM_PROGRAM
+    if ($env | get -o TERM_PROGRAM) == "vscode" {
+        $out.EDITOR = "code -w"
+    }
+    if ($env | get -o TERM_PROGRAM) == "zed" {
+        $out.EDITOR = "zed -w"
+    }
+
     # path stuff follows:
     # *deep breath*
 
