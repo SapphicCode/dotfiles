@@ -104,22 +104,14 @@ def main [flavor: string] {
     # gobin
     $path = $path | prepend $"($out.GOPATH)/bin"
 
-    # user scripts
-    let dev_scripts = $"($env.HOME)/dev/scripts"
-    if ($dev_scripts | path exists) {
-        $path = $path | prepend $dev_scripts
-    }
-
-    let sandbox_scripts = $"($env.HOME)/dev/1p/x/scripts"
-    if ($sandbox_scripts | path exists) {
-        $path = $path | prepend $sandbox_scripts
-    }
-
-    # user path
-    $path = $path | prepend [
-        $"($env.HOME)/bin",
+    # user paths
+    let user_paths = [
         $"($env.HOME)/.local/bin",
-    ]
+        $"($env.HOME)/bin",
+        $"($env.HOME)/dev/1p/x/scripts",
+        $"($env.HOME)/dev/scripts",
+    ] | where {|it| $it | path exists }
+    $path = $path | prepend $user_paths
 
     $path = $path | uniq
 
