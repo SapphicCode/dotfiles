@@ -29,28 +29,21 @@ else if type -q doas
     set sudo doas
 end
 
-# global PATHs
-## brew
+# add nix profile to PATH early (so we can find nu)
+if path is -d $HOME/.nix-profile/bin
+    fish_add_path -g -m $HOME/.nix-profile/bin
+end
+
+# source universal environment setup
+if type -q nu; and test -x $HOME/.local/bin/_env-setup
+    eval ($HOME/.local/bin/_env-setup fish)
+end
+
+# brew: source shellenv for additional env vars (HOMEBREW_PREFIX, etc.)
 if string match -q -e $platform darwin; and path is -d /opt/homebrew
     eval (/opt/homebrew/bin/brew shellenv)
 else if string match -q -e $platform linux; and path is -d /home/linuxbrew/.linuxbrew
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-end
-## nix
-### global paths (prefer current-system over default profile)
-if path is -d /nix/var/nix/profiles/default/bin
-    fish_add_path -g -m /nix/var/nix/profiles/default/bin
-end
-if path is -d /run/current-system/sw/bin
-    fish_add_path -g -m /run/current-system/sw/bin
-end
-### local profile
-if path is -d $HOME/.nix-profile/bin
-    fish_add_path -g -m $HOME/.nix-profile/bin
-end
-## bump security wrappers to the front again on NixOS
-if grep -q ID=nixos /etc/os-release &>/dev/null; and path is -d /run/wrappers/bin
-    fish_add_path -g -m /run/wrappers/bin
 end
 
 # fix $SHELL
@@ -58,63 +51,9 @@ if type -q fish
     set -g -x SHELL (type -p fish)
 end
 
-# Go
-set -g -x GOPATH $HOME/dev/go
-set -g -x CGO_ENABLED 0
-
-# Editors
-if type -q nvim
-    if not set -U -q EDITOR &>/dev/null
-        set -U -x EDITOR nvim
-    end
-    set -g -x MANPAGER "nvim +Man!"
-end
-# prefer universal over global variable in this case
-if set -g -q EDITOR &>/dev/null
-    set -g --erase EDITOR
-end
-
-if [ "$TERM_PROGRAM" = vscode ]
-    set -g -x EDITOR "code -w"
-end
-if [ "$TERM_PROGRAM" = zed ]
-    set -g -x EDITOR "zed -w"
-end
-
 # gcloud
 if type -q gcloud; and type -q python3.9
     set -g -x CLOUDSDK_PYTHON (type --path python3.9)
-end
-
-# pnpm
-if type -q pnpm
-    set -g -x PNPM_HOME $HOME/.local/share/pnpm
-    mkdir -p $PNPM_HOME
-end
-
-# modify local PATH
-if [ -d $GOPATH/bin ]
-    fish_add_path -g -m $GOPATH/bin
-end
-if [ -d $PNPM_HOME ]
-    fish_add_path -g -m $PNPM_HOME
-end
-if [ -d $HOME/.bun/bin ]
-    fish_add_path -g -m $HOME/.bun/bin
-end
-if [ -d $HOME/.local/bin ]
-    fish_add_path -g -m $HOME/.local/bin
-end
-if [ -d $HOME/dev/scripts ]
-    fish_add_path -g -m $HOME/dev/scripts
-end
-if [ -d $HOME/dev/1p/x/scripts ]
-    fish_add_path -g -m $HOME/dev/1p/x/scripts
-end
-
-# rclone
-if type -q rclone
-    set -g -x RCLONE_FAST_LIST 1
 end
 
 # podman socket for docker

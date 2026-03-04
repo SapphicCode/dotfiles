@@ -5,12 +5,22 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+# add nix profile to PATH early (so we can find nu)
+if [ -d "$HOME/.nix-profile/bin" ]; then
+    export PATH="$HOME/.nix-profile/bin:$PATH"
 fi
-export PATH
+
+# source universal environment setup
+if command -v nu > /dev/null && [ -x "$HOME/.local/bin/_env-setup" ]; then
+    eval "$($HOME/.local/bin/_env-setup bash)"
+fi
+
+# add brew shellenv for additional vars (HOMEBREW_PREFIX, etc.)
+for brew in /opt/homebrew /home/linuxbrew/.linuxbrew; do
+    if [ -d $brew ]; then
+        eval "$(${brew}/bin/brew shellenv)"
+    fi
+done
 
 # User specific aliases and functions
 if [ -d ~/.bashrc.d ]; then
@@ -22,20 +32,6 @@ if [ -d ~/.bashrc.d ]; then
 fi
 
 unset rc
-
-# add brew to PATH
-for brew in /opt/homebrew /home/linuxbrew/.linuxbrew; do
-    if [ -d $brew ]; then
-        eval "$(${brew}/bin/brew shellenv)"
-    fi
-done
-
-# add nix-profile to PATH
-for nix in /nix/var/nix/profiles/default/bin $HOME/.nix-profile/bin /run/wrappers/bin; do
-    if [ -d "$nix" ]; then
-        PATH="${nix}:${PATH}"
-    fi
-done
 
 # make bash play dumb unless intentionally launched by user
 if [[ "${SSH_CONNECTION}" || "${TERM_PROGRAM}" || "${WSL_DISTRO_NAME}" ]] && tty -s; then
