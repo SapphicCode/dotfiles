@@ -1,0 +1,81 @@
+#!/usr/bin/env nu
+
+# This script attempts to set up environment variables for any kind of shell.
+# It is intended to be sourced by the various shell configuration files.
+
+def quote [] {
+    mut o = $in
+    if ($o | describe) == "list<string>" {
+        $o = $o | str join ":"
+    }
+    $o = $o | str replace '"' '\"'
+    $"\"($o)\""
+}
+
+def main [flavor: string] {
+    mut path = $env.PATH
+    mut out = {}
+
+    # *deep breath*
+
+    # homebrew
+    if ("/opt/homebrew/" | path exists) {
+        $path = $path | prepend [
+            "/opt/homebrew/bin"
+            "/opt/homebrew/sbin"
+        ]
+    }
+
+    # Nix stuff
+    # check for /nix existence
+    if ("/nix/" | path exists) {
+        $path = $path | prepend [
+            $"($env.HOME)/.local/share/devbox/global/default/.devbox/nix/profile/default/bin",
+            $"($env.HOME)/.nix-profile/bin",
+            "/nix/var/nix/profiles/default/bin",
+        ]
+        if (sys host | get name) == "NixOS" {
+            # add NixOS setuid binaries in front of the above
+            $path = $path | prepend ["/run/wrappers/bin"]
+        }
+    }
+
+    # golang
+    $out.GOPATH = $"($env.HOME)/dev/go"
+    $path = $path | prepend $"($out.GOPATH)/bin"
+
+    # user path
+    $path = $path | prepend [
+        $"($env.HOME)/.local/bin",
+        $"($env.HOME)/bin",
+    ]
+
+    $path = $path | uniq
+
+    # export it all
+   $out.PATH = $path
+    match $flavor {
+        json => {
+            print ($out | to json)
+        }
+        bash => {
+            print (
+                $out
+                | items { |k, v| $"export ($k)=($v | quote)" }
+                | str join "\n"
+            )
+        }
+        fish => {
+            print (
+                $out
+                | items { |k, v| $"set -g -x ($k) ($v | quote)" }
+                | str join "\n"
+            )
+        }
+        _ => {
+            print $"Unsupported shell flavor: ($flavor)"
+            exit 1
+        }
+    }
+
+}
