@@ -1,7 +1,11 @@
 Compression yes
 
+# following IdentityAgents are mostly here for OrbStack VM passthrough
 {{ if eq .chezmoi.hostname "Clementine" }}
 IdentityAgent /Users/sapphiccode/Library/Caches/yubikey-agent.sock
+{{- end }}
+{{ if eq .chezmoi.hostname "Maeve" }}
+IdentityAgent /Users/sapphiccode/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 {{- end }}
 
 {{ if eq .chezmoi.os "darwin" }}
