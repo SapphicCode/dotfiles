@@ -81,18 +81,44 @@ def main [flavor: string] {
             "/nix/var/nix/profiles/default/bin",
         ]
         if (sys host | get name) == "NixOS" {
-            # add NixOS setuid binaries in front of the above
-            $path = $path | prepend ["/run/wrappers/bin"]
+            # add NixOS current-system and setuid wrappers
+            # wrappers have highest priority
+            $path = $path | prepend [
+                "/run/wrappers/bin",
+                "/run/current-system/sw/bin",
+            ]
         }
+    }
+
+    # pnpm
+    if ($out.PNPM_HOME | path exists) {
+        $path = $path | prepend $out.PNPM_HOME
+    }
+
+    # bun
+    let bun_bin = $"($env.HOME)/.bun/bin"
+    if ($bun_bin | path exists) {
+        $path = $path | prepend $bun_bin
     }
 
     # gobin
     $path = $path | prepend $"($out.GOPATH)/bin"
 
+    # user scripts
+    let dev_scripts = $"($env.HOME)/dev/scripts"
+    if ($dev_scripts | path exists) {
+        $path = $path | prepend $dev_scripts
+    }
+
+    let sandbox_scripts = $"($env.HOME)/dev/1p/x/scripts"
+    if ($sandbox_scripts | path exists) {
+        $path = $path | prepend $sandbox_scripts
+    }
+
     # user path
     $path = $path | prepend [
-        $"($env.HOME)/.local/bin",
         $"($env.HOME)/bin",
+        $"($env.HOME)/.local/bin",
     ]
 
     $path = $path | uniq
