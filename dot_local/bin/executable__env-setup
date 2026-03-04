@@ -16,6 +16,33 @@ def main [flavor: string] {
     mut path = $env.PATH
     mut out = {}
 
+    # platform detection
+    let platform = (sys host | get name)
+    let cache = if $platform == "Darwin" {
+        $"($env.HOME)/Library/Caches"
+    } else {
+        $"($env.HOME)/.cache"
+    }
+
+    # app-specific stuff:
+
+    # golang
+    $out.GOPATH = $"($env.HOME)/dev/go"
+    $out.CGO_ENABLED = "0"
+
+    # npm
+    $out.npm_config_cache = $"($cache)/npm"
+
+    # pnpm
+    $out.PNPM_HOME = $"($cache)/pnpm"
+
+    # bun
+    $out.BUN_INSTALL_CACHE_DIR = $"($cache)/bun"
+
+    # rclone
+    $out.RCLONE_FAST_LIST = "1"
+
+    # path stuff follows:
     # *deep breath*
 
     # homebrew
@@ -40,8 +67,7 @@ def main [flavor: string] {
         }
     }
 
-    # golang
-    $out.GOPATH = $"($env.HOME)/dev/go"
+    # gobin
     $path = $path | prepend $"($out.GOPATH)/bin"
 
     # user path
