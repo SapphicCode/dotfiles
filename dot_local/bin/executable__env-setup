@@ -17,8 +17,8 @@ def main [flavor: string] {
     mut out = {}
 
     # platform detection
-    let platform = (sys host | get name)
-    let cache = if $platform == "Darwin" {
+    let os = (sys host | get name)
+    let cache = if $os == "Darwin" {
         $"($env.HOME)/Library/Caches"
     } else {
         $"($env.HOME)/.cache"
@@ -75,18 +75,21 @@ def main [flavor: string] {
     # Nix stuff
     # check for /nix existence
     if ("/nix/" | path exists) {
+        # system-level nix paths
         $path = $path | prepend [
-            $"($env.HOME)/.local/share/devbox/global/default/.devbox/nix/profile/default/bin",
-            $"($env.HOME)/.nix-profile/bin",
             "/nix/var/nix/profiles/default/bin",
         ]
-        if (sys host | get name) == "NixOS" {
-            # add NixOS current-system and setuid wrappers
-            # wrappers have highest priority
-            $path = $path | prepend [
-                "/run/wrappers/bin",
-                "/run/current-system/sw/bin",
-            ]
+        if $os == "NixOS" {
+            $path = $path | prepend ["/run/current-system/sw/bin"]
+        }
+        # user nix profiles
+        $path = $path | prepend [
+            $"($env.HOME)/.nix-profile/bin",
+            $"($env.HOME)/.local/share/devbox/global/default/.devbox/nix/profile/default/bin",
+        ]
+        if $os == "NixOS" {
+            # setuid wrappers (highest priority)
+            $path = $path | prepend ["/run/wrappers/bin"]
         }
     }
 
