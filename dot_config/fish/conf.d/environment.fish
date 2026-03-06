@@ -36,7 +36,7 @@ end
 
 # source universal environment setup
 if type -q nu; and test -x $HOME/.local/bin/_env-setup
-    eval ($HOME/.local/bin/_env-setup fish)
+    $HOME/.local/bin/_env-setup fish | source
 end
 
 # brew: source shellenv for additional env vars (HOMEBREW_PREFIX, etc.)
