@@ -23,6 +23,7 @@ def main [flavor: string] {
     } else {
         $"($env.HOME)/.cache"
     }
+    $out.XDG_CACHE_HOME = $cache
 
     # app-specific stuff:
 
