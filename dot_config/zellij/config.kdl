@@ -1,0 +1,6 @@
+keybinds {
+	shared_except "locked" {
+		bind "Ctrl q" { Detach; }
+		bind "Ctrl ;" { Quit; }
+	}
+}
