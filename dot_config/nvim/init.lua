@@ -12,6 +12,62 @@ vim.o.breakindentopt = "shift:4"
 vim.o.number = true
 vim.o.numberwidth = 6
 
+-- language-specific 2-space tabs
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "json", "yaml", "toml", "lua" },
+	callback = function()
+		vim.opt_local.tabstop = 2
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.expandtab = true
+	end,
+})
+
+-- language-specific tabs (ew)
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "go" },
+	callback = function()
+		vim.opt_local.expandtab = false
+	end,
+})
+
+-- shift+arrow selections
+vim.opt.keymodel = { "startsel", "stopsel" }
+
+-- Ctrl+C / Ctrl+X in visual mode
+vim.keymap.set("v", "<C-c>", '"+y', { noremap = true })
+vim.keymap.set("v", "<C-x>", '"+d', { noremap = true })
+
+-- Ctrl+V in insert/normal mode
+-- Normal mode: proper paste with auto-format
+vim.keymap.set("n", "<C-v>", function()
+	vim.cmd('normal! "+p')
+	vim.lsp.buf.format({ async = false })
+end, { noremap = true })
+-- Insert mode: exit to normal, paste, format, return to insert
+vim.keymap.set("i", "<C-v>", function()
+	vim.cmd('stopinsert')
+	vim.cmd('normal! "+p')
+	vim.lsp.buf.format({ async = false })
+	vim.cmd('startinsert')
+end, { noremap = true })
+
+-- Backspace in visual mode (delete without copying)
+vim.keymap.set("v", "<BS>", '"_d', { noremap = true })
+
+-- remember last cursor position, https://github.com/creativenull/dotfiles/blob/9ae60de4f926436d5682406a5b801a3768bbc765/config/nvim/init.lua#L70-L86
+local remember_cursor_position = vim.api.nvim_create_augroup("RememberCursorPosition", { clear = true })
+vim.api.nvim_create_autocmd("BufReadPost", {
+	group = remember_cursor_position,
+	callback = function(args)
+		local valid_line = vim.fn.line([['"]]) >= 1 and vim.fn.line([['"]]) < vim.fn.line("$")
+		local not_commit = vim.b[args.buf].filetype ~= "commit"
+
+		if valid_line and not_commit then
+			vim.cmd([[normal! g`"]])
+		end
+	end,
+})
+
 -- plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -42,9 +98,20 @@ require("lazy").setup({
 	"neovim/nvim-lspconfig",
 	"creativenull/efmls-configs-nvim",
 	{ "lukas-reineke/lsp-format.nvim", opts = {} }, -- auto-formatting
+	{
+		"saghen/blink.cmp",
+		version = "1.*",
+		opts = {
+			keymap = {
+				preset = "default",
+				["<CR>"] = { "accept", "fallback" },
+			},
+			signature = { enabled = true },
+		},
+	},
 
 	-- syntax highlighting
-	"nvim-treesitter/nvim-treesitter",
+	{ "nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate" },
 	{ "LhKipp/nvim-nu", config = false },
 
 	{ "lewis6991/gitsigns.nvim", opts = {} }, -- git line changes in line number gutter
@@ -56,7 +123,19 @@ require("lazy").setup({
 		},
 	}, -- blame on cursor line
 
-	{ "dstein64/vim-startuptime" },
+	"dstein64/vim-startuptime",
+
+	-- tree sidebar
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"nvim-tree/nvim-web-devicons", -- optional, but recommended
+		},
+		lazy = false, -- neo-tree will lazily load itself
+	},
 })
 
 -- witch hazel
@@ -72,7 +151,7 @@ vim.keymap.set("n", "<leader>fb", telescope.buffers)
 -- language server config
 if vim.env.NVIM_NO_LSP == nil then
 	if vim.fn.executable("efm-langserver") == 1 then
-		require("lspconfig").efm.setup({
+		vim.lsp.config("efm", {
 			init_options = { documentFormatting = true },
 			on_attach = require("lsp-format").on_attach,
 			settings = {
@@ -101,15 +180,18 @@ if vim.env.NVIM_NO_LSP == nil then
 		})
 	end
 	if vim.fn.executable("nu") == 1 then
-		require("lspconfig").nushell.setup({})
+		vim.lsp.enable("nushell")
 	end
 	if vim.fn.executable("gcc") == 1 then
-		require("nvim-treesitter.configs").setup({
+		require("nvim-treesitter.config").setup({
 			highlight = { enable = true },
 			ensure_installed = { "lua", "vim", "vimdoc", "python", "nu" },
 		})
 	end
 	if vim.fn.executable("pyright") == 1 then
-		require("lspconfig").pyright.setup({})
+		vim.lsp.enable("pyright")
+	end
+	if vim.fn.executable("gopls") == 1 then
+		vim.lsp.enable("gopls")
 	end
 end
