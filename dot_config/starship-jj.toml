@@ -1,0 +1,101 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+${custom.jj}\
+$fossil_branch\
+$fossil_metrics\
+$kubernetes\
+$direnv\
+$env_var\
+${custom.timew}\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$os\
+$container\
+$netns\
+$shell\
+$character"""
+
+[git_status]
+disabled = true
+
+[git_branch]
+disabled = true
+
+[git_commit]
+disabled = true
+
+[sudo]
+disabled = false
+
+[time]
+disabled = false
+format = "[$time]($style) "
+style = "purple"
+time_format = "%R"
+
+[shell]
+disabled = false
+fish_indicator = ""
+
+[env_var.https_proxy]
+symbol = "🌐"
+style = "red bold"
+format = "with [$symbol$env_value]($style) "
+
+[docker_context]
+disabled = true
+
+[kubernetes]
+disabled = false
+symbol = "⎈ "
+format = '[$symbol$context(/$namespace)]($style) '
+
+[container]
+disabled = true
+
+[custom.jj]
+require_repo = true
+shell = "fish"
+when = "jj root &>/dev/null"
+command = '''
+jj log --no-graph --color always -r @ -T '
+  separate(" ",
+    format_short_change_id_with_change_offset(self),
+    format_short_signature_oneline(self.author()),
+    self.bookmarks(),
+    self.tags(),
+    if(!self.empty(),
+      separate(" ",
+        label("diff added",
+          separate("",
+            "±",
+            self.diff().files().len()
+          )
+        )
+      ),
+      if(self.conflicted_files(),
+        label("conflict",
+          separate("",
+            "‼",
+            self.conflicted_files().len()
+          )
+        )
+      )
+    )
+  )'
+'''
+format = 'on [$symbol($output )]($style)'
