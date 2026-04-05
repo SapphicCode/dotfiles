@@ -75,7 +75,7 @@ command = '''
 jj log --no-graph --color always -r @ -T '
   separate(" ",
     format_short_change_id_with_change_offset(self),
-    format_short_signature_oneline(self.author()),
+    self.author().email(),
     self.bookmarks(),
     self.tags(),
     if(!self.empty(),
