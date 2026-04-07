@@ -44,6 +44,18 @@
             "context": 65535,
             "output": 65535
           }
+        },
+        "qwen3.5-27b": {
+          "limit": {
+            "output": 131072,
+            "context": 131072
+          }
+        },
+        "qwen3.5-27b-claude-4.6-opus-distilled-mlx": {
+          "limit": {
+            "output": 131072,
+            "context": 131072
+          }
         }
       }
     }
