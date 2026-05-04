@@ -12,11 +12,11 @@ end
 # elevated commands
 if [ $(id -u) != 0 ]
     if type -q systemctl
-        abbr -g -a systemctl "\$sudo systemctl"
+        abbr -g -a systemctl "sudo systemctl"
     end
     if type -q zfs
-        abbr -g -a zfs "\$sudo zfs"
-        abbr -g -a zpool "\$sudo zpool"
+        abbr -g -a zfs "sudo zfs"
+        abbr -g -a zpool "sudo zpool"
     end
 end
 
