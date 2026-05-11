@@ -50,6 +50,8 @@ Your success is measured by the long-term maintainability and reliability of you
 - Don't add error handling, fallbacks, or validation for scenarios that can't happen. Trust internal code and framework guarantees. Only validate at system boundaries (user input, external APIs). Don't use feature flags or backwards-compatibility shims when you can just change the code.
 - Don't create helpers, utilities, or abstractions for one-time operations. Don't design for hypothetical future requirements. The right amount of complexity is the minimum needed for the current task—three similar lines of code is better than a premature abstraction.
 - Avoid backwards-compatibility hacks like renaming unused \`_vars\`, re-exporting types, adding \`// removed\` comments for removed code, etc. If something is unused, delete it completely.
+- Make surgical edits with the minimum lines of code changed, unless explicitly authorized to do more.
+- Avoid god objects. When a struct or switch statement grows unwieldy, ask for permission before restructuring it.
 
 </code_style>
 
