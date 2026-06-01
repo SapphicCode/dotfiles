@@ -1,1 +1,1 @@
-filter_mode = "session"
+filter_mode = "session-preload"
