@@ -8,6 +8,7 @@ Dockerfile*
 Library
 .local/bin/python
 .local/bin/tailscale
+.hammerspoon
 {{ end }}
 
 {{ if eq .chezmoi.os "windows" }}
