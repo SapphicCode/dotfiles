@@ -1,5 +1,8 @@
 #!/opt/homebrew/bin/python3
 
+# <xbar.title>Timewarrior</xbar.title>
+# <xbar.dependencies>rclone</xbar.dependencies>
+
 import os
 import shutil
 import subprocess
