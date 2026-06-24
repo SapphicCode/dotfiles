@@ -105,6 +105,9 @@ def main [flavor: string] {
         $path = $path | prepend $bun_bin
     }
 
+    # rust / cargo
+    $path = $path | prepend $"($env.HOME)/.cargo/bin"
+
     # gobin
     $path = $path | prepend $"($out.GOPATH)/bin"
 
