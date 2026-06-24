@@ -60,6 +60,7 @@ disabled = true
 disabled = false
 symbol = "⎈ "
 format = '[$symbol$context(/$namespace)]($style) '
+detect_extensions = ["yml", "yaml", "tpl"]
 
 [container]
 disabled = true
