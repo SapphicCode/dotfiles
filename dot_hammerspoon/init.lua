@@ -28,6 +28,9 @@ hs.application.watcher.new(function(name, event, app)
 end):start()
 
 -- Automatically align some windows when focused
+local targetHostname = "Clementine"
+
+if hs.host.localizedName() == targetHostname then
 local windowRatios = {
   ["Helium"] = "twoThirds",
   ["Zen"] = "twoThirds",
@@ -100,3 +103,4 @@ end)
 windowFilter:subscribe(hs.window.filter.windowFocused, function(win)
   alignWindow(win)
 end)
+end
