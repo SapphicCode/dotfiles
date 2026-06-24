@@ -34,7 +34,7 @@ fi
 unset rc
 
 # make bash play dumb unless intentionally launched by user
-if [[ "${SSH_CONNECTION}" || "${TERM_PROGRAM}" || "${WSL_DISTRO_NAME}" ]] && tty -s; then
+if [[ -z "${BASH_NOAUTO}" ]] && [[ "${SSH_CONNECTION}" || "${TERM_PROGRAM}" || "${WSL_DISTRO_NAME}" ]] && tty -s; then
     # reset home if WSL or OrbStack launched from windows home
     if type -P rg > /dev/null && ([[ "${WSL_DISTRO_NAME}" ]] || echo "$BROWSER" | rg -q orbstack) && echo "$(pwd)" | rg -q "/Users/[^/]+$"; then
         cd "$HOME"
