@@ -16,7 +16,7 @@
       "fd *": "allow",
       "rg *": "allow",
       "ls *": "allow",
-      "nl *": {"action": "deny", "reason": "use your read tool or cat / rg / head / tail"},
+      "nl *": {"action": "deny", "reason": "use your read tool"},
       "cat *": "allow",
       "pwd": "allow",
       "wc *": "allow",
@@ -37,6 +37,7 @@
     "memory": "allow",
     "memory_search": "allow",
     "web_search": "allow",
-    "web_fetch": "allow"
+    "web_fetch": "allow",
+    "ask_user_question": "allow"
   }
 }
