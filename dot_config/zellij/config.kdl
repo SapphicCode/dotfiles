@@ -4,3 +4,5 @@ keybinds {
 		bind "Ctrl ;" { Quit; }
 	}
 }
+
+theme "tokyo-night-dark"
