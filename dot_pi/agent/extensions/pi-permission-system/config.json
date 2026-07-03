@@ -31,9 +31,8 @@
       "jq *": "allow"
     },
     "read": "allow",
-    "find": "allow",
-    "grep": "allow",
-    "ls": "allow",
+    "edit": "ask",
+    "write": "ask",
     "todo": "allow",
     "memory": "allow",
     "memory_search": "allow",
