@@ -13,15 +13,23 @@
     "bash": {
       "*": "ask",
       "grep *": "allow",
+      "rg *": "allow",
       "ls *": "allow",
       "find *": "allow",
+      "sort *": "allow",
       "wc *": "allow",
       "head *": "allow",
       "tail *": "allow",
       "git log *": "allow",
       "git status *": "allow",
       "git show *": "allow",
-      "git diff *": "allow"
+      "git diff *": "allow",
+      "jj log *": "allow",
+      "jj status *": "allow",
+      "jj show *": "allow",
+      "jj diff *": "allow",
+      "go env *": "allow",
+      "go doc *": "allow"
     }
   },
   "provider": {
@@ -32,26 +40,22 @@
         "baseURL": "http://clementine.atlas-ide.ts.net:1234/v1"
       },
       "models": {
-        "devstral-small-2-24b-instruct-2512": {
-          "name": "Devstral Small 2 24b 2512"
-        },
-        "qwen3/qwen3-coder-next": {
-          "name": "Qwen3 Coder Next"
-        },
-        "qwen3/qwen3-coder-30b": {
-          "name": "Qwen3 Coder 30b",
+        "qwen3.5-27b": {
+          "name": "Qwen3.5 27b",
           "limit": {
-            "context": 65535,
-            "output": 65535
+            "context": 131072,
+            "output": 131072
           }
         },
-        "qwen3.5-27b": {
+        "gemma-4-31b-it": {
+          "name": "Gemma 4 31b Instruct",
           "limit": {
-            "output": 131072,
-            "context": 131072
+            "context": 131072,
+            "output": 131072
           }
         },
         "qwen3.5-27b-claude-4.6-opus-distilled-mlx": {
+          "name": "Qwen3.5 27b (Claude 4.6 Opus Distilled)",
           "limit": {
             "output": 131072,
             "context": 131072
