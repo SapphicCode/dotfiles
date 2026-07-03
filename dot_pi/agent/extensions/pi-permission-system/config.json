@@ -1,0 +1,43 @@
+{
+  "permission": {
+    "path": {
+      "*": "allow",
+      ".envrc.local": "deny",
+      "secrets.yaml": "deny",
+      "kubeconfig": "deny",
+      "talosconfig": "deny",
+      "controlplane.yaml": "deny",
+      "worker.yaml": "deny"
+    },
+    "bash": {
+      "*": "ask",
+      "find *": {"action": "deny", "reason": "use fd instead"},
+      "grep *": {"action": "deny", "reason": "use rg instead"},
+      "fd *": "allow",
+      "rg *": "allow",
+      "ls *": "allow",
+      "nl *": {"action": "deny", "reason": "use your read tool or cat / rg / head / tail"},
+      "cat *": "allow",
+      "pwd": "allow",
+      "wc *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "sort *": "allow",
+      "git log *": "allow",
+      "git status *": "allow",
+      "git show *": "allow",
+      "git diff *": "allow",
+      "yq *": "allow",
+      "jq *": "allow"
+    },
+    "read": "allow",
+    "find": "allow",
+    "grep": "allow",
+    "ls": "allow",
+    "todo": "allow",
+    "memory": "allow",
+    "memory_search": "allow",
+    "web_search": "allow",
+    "web_fetch": "allow"
+  }
+}
