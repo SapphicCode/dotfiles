@@ -9,14 +9,22 @@
       "controlplane.yaml": "deny",
       "worker.yaml": "deny"
     },
+    "external_directory": {
+      "*": "ask",
+      "/tmp": "allow",
+      "~/dev/go": "allow"
+    },
     "bash": {
       "*": "ask",
-      "find *": {"action": "deny", "reason": "use fd instead"},
-      "grep *": {"action": "deny", "reason": "use rg instead"},
+      "find *": "allow",
+      "grep *": "allow",
       "fd *": "allow",
       "rg *": "allow",
       "ls *": "allow",
-      "nl *": {"action": "deny", "reason": "use your read tool"},
+      "nl *": {
+        "action": "deny",
+        "reason": "use your read tool"
+      },
       "cat *": "allow",
       "pwd": "allow",
       "wc *": "allow",
@@ -28,7 +36,8 @@
       "git show *": "allow",
       "git diff *": "allow",
       "yq *": "allow",
-      "jq *": "allow"
+      "jq *": "allow",
+      "go env *": "allow"
     },
     "read": "allow",
     "edit": "ask",
@@ -38,6 +47,7 @@
     "memory_search": "allow",
     "web_search": "allow",
     "web_fetch": "allow",
-    "ask_user_question": "allow"
+    "ask_user_question": "allow",
+    "mem_*": "allow"
   }
 }
