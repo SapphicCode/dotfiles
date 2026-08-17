@@ -9,9 +9,7 @@ IdentityAgent /Users/sapphiccode/Library/Containers/com.maxgoedjen.Secretive.Sec
 {{- end }}
 
 {{ if eq .chezmoi.os "darwin" }}
-Host orb
-Hostname {{lower .chezmoi.hostname}}.orb.local
-ForwardAgent yes
+Include ~/.orbstack/ssh/config
 {{- end }}
 
 Host blahaj
