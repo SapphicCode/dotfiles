@@ -1,8 +1,8 @@
 keybinds {
 	shared_except "locked" {
 		bind "Ctrl q" { Detach; }
-		bind "Ctrl ;" { Quit; }
+		bind "Ctrl Shift q" { Quit; }
 	}
 }
-
+default_mode "locked"
 theme "tokyo-night-dark"
