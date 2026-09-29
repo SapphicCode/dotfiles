@@ -1,4 +1,7 @@
 {
+  "debugLog": false,
+  "permissionReviewLog": true,
+  "yoloMode": false,
   "permission": {
     "path": {
       "*": "allow",
@@ -12,10 +15,13 @@
     "external_directory": {
       "*": "ask",
       "/tmp": "allow",
-      "~/dev/go": "allow"
+      "~/dev/go": "allow",
+      "/nix/store": "allow"
     },
     "bash": {
       "*": "ask",
+      "echo *": "allow",
+      "cd *": "allow",
       "find *": "allow",
       "grep *": "allow",
       "fd *": "allow",
@@ -25,7 +31,11 @@
         "action": "deny",
         "reason": "use your read tool"
       },
-      "cat *": "allow",
+      "sed -n *": {
+        "action": "deny",
+        "reason": "use your read tool"
+      },
+      "cat *": "ask",
       "pwd": "allow",
       "wc *": "allow",
       "head *": "allow",
@@ -48,6 +58,7 @@
     "web_search": "allow",
     "web_fetch": "allow",
     "ask_user_question": "allow",
-    "mem_*": "allow"
+    "mem_*": "allow",
+    "*goal*": "allow"
   }
 }
