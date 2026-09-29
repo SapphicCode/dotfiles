@@ -14,5 +14,6 @@
     },
     "savecursor": true,
     "tabsize": 2,
-    "tabstospaces": true
+    "tabstospaces": true,
+    "clipboard": "terminal"
 }
