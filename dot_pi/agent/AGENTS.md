@@ -67,8 +67,12 @@ Your success is measured by the long-term maintainability and reliability of you
 
 <environment>
 
-Python is available via `uv run` (e.g. `uv run python`, `uv run <script.py>`).
+Python is available via `uv run` (e.g. `uv run python`, `uv run <script.py>`). When using Python for YAML, remember to use `--with pyyaml`.
+
 Nix is available via `nix shell nixpkgs#<tool> -c "<tool> --help"`.
-The usual suspects are available: jq, yq-go, ripgrep, fd.
+
+The usual suspects are available:
+  - jq, yq (for JSON and YAML validation, respectively)
+  - fd for file discovery
 
 </environment>

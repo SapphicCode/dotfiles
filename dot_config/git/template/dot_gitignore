@@ -18,6 +18,7 @@ result
 # Editors
 .idea/*
 .vscode/*
+.pi/*
 
 # Syncthing
 .stfolder
